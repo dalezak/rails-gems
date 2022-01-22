@@ -79,3 +79,7 @@ gem "devise", "~> 4.8"
 gem "devise_invitable", "~> 2.0"
 
 gem "cancancan", "~> 3.3"
+
+gem "omniauth", "~> 2.0"
+
+gem "omniauth-github", "~> 2.0"
