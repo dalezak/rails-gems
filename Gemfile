@@ -83,3 +83,5 @@ gem "cancancan", "~> 3.3"
 gem "omniauth", "~> 2.0"
 
 gem "omniauth-github", "~> 2.0"
+
+gem "devise-bootstrap5", "~> 0.1.3"
