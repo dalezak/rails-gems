@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_131447) do
+ActiveRecord::Schema.define(version: 2022_01_22_125525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "identities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "token"
+    t.string "refresh_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider"], name: "index_identities_on_provider"
+    t.index ["refresh_token"], name: "index_identities_on_refresh_token"
+    t.index ["token"], name: "index_identities_on_token"
+    t.index ["uid"], name: "index_identities_on_uid"
+    t.index ["user_id"], name: "index_identities_on_user_id"
+  end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +58,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_131447) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.integer "identities_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
@@ -52,4 +68,5 @@ ActiveRecord::Schema.define(version: 2022_01_11_131447) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "identities", "users"
 end
