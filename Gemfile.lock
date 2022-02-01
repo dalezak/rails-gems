@@ -72,6 +72,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.9.4)
       msgpack (~> 1.0)
+    bootstrap_form (5.0.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     builder (3.2.4)
     cancancan (3.3.0)
     capybara (3.36.0)
@@ -281,6 +284,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap_form (~> 5.0)
   cancancan (~> 3.3)
   capybara
   cssbundling-rails
