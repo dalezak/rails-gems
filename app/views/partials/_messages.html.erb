@@ -1,0 +1,15 @@
+<% colors = { 
+  info: "info",
+  notice: "success",
+  success: "success",
+  warning: "warning",
+  error: "danger"
+}.freeze %>
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+  <div class="alert alert-<%= colors[name.to_sym] || "info" %> alert-dismissible fade show" role="alert">
+    <%= content_tag :div, msg %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <% end %>
+<% end %>

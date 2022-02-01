@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>RailsGems</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= render 'partials/metatags' %>
   </head>
-  <body>
-    <%= yield %>
+  <body class="<%= body_class(params) %>">
+    <nav class="d-block">
+      <%= render 'partials/navbar' %>
+    </nav>
+    <main role="main" class="main m-3">
+      <div class="container-fluid">
+        <%= render 'partials/messages' %>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
