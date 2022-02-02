@@ -1,7 +1,12 @@
 class User < ApplicationRecord
   
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :invitable, :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :validatable
+
   has_many :identities, dependent: :destroy
   
+  scope :for_search, ->(query) { where(email: query).or(where(name: query.downcase)).or(where(username: query.downcase)) if query.present? }
+
   def self.from_omniauth(auth)
     if auth.present? && auth.provider.present? && auth.uid.present?
       identity = Identity.where(provider: auth.provider, uid: auth.uid).first_or_initialize
@@ -23,8 +28,4 @@ class User < ApplicationRecord
     end
   end
   
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :invitable, :database_authenticatable, :omniauthable, :registerable,
-         :recoverable, :rememberable, :validatable
 end

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_125525) do
     t.string "last_sign_in_ip"
     t.string "type", default: "User"
     t.string "name"
+    t.string "username"
     t.string "title"
     t.text "description"
     t.jsonb "details", default: {}
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_125525) do
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["type"], name: "index_users_on_type"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "identities", "users"

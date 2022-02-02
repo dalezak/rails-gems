@@ -1,2 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
-@import 'rails_bootstrap_forms';
+
+.breadcrumb {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}

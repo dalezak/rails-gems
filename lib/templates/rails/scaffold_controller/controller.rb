@@ -9,13 +9,12 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def index
     authorize! :index, <%= class_name %>
-	@since = params.fetch(:since, nil)
-    @search = params.fetch(:search, nil)
+	  @search = params.fetch(:search, nil)
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 12).to_i, 48].min
-    query = <%= class_name %>.for_since(@since).for_search(@search)
+    query = <%= class_name %>.for_search(@search)
     @<%= plural_table_name %> = query.limit(@limit).offset(@offset).order(created_at: :asc).all
-    @<%= plural_table_name %>_count = query.count(:all)
+    @<%= plural_table_name %>_count = query.count(:all) if request.format.html?
     respond_to do |format|
       format.html { render layout: true }
       format.json { }

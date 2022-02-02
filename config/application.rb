@@ -11,12 +11,14 @@ module RailsGems
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = "UTC"
+    config.active_record.default_timezone = :utc
+    config.i18n.default_locale = :en
+    config.i18n.available_locales = [:en]
+    config.i18n.fallbacks = [I18n.default_locale]
+
+    config.eager_load_paths += Dir[Rails.root.join('app', 'jobs', '**/')]
+    config.eager_load_paths += Dir[Rails.root.join('app', 'models', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'mailers', '**/')]
   end
 end

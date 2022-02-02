@@ -1,0 +1,27 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Users", users_path %></li>
+    <li class="breadcrumb-item active mr-auto" aria-current="page"><%= @user.id %></li> 
+  </ol>
+</nav>  
+<div class="card">
+  <h5 class="card-header">User</h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <p class="fw-bold">Name</p>
+      <p class="fw-normal"><%= @user.name %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Username</p>
+      <p class="fw-normal"><%= @user.username %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Title</p>
+      <p class="fw-normal"><%= @user.title %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Description</p>
+      <p class="fw-normal"><%= @user.description %></p>
+    </li>
+  </ul>
+</div>

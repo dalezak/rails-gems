@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :type, default: "User", index: true
 
       t.string :name, index: true
+      t.string :username, index: true
       t.string :title
       t.text :description
       t.jsonb :details, default: {}

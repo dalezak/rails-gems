@@ -1,0 +1,43 @@
+<% if user.errors.any? %>
+  <% user.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
+  <% end %>
+<% end %>
+<%= form_with(model: user, local: true) do |form| -%>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :name, class: "font-weight-bold" %>
+        <%= form.text_field :name, placeholder: "Enter name", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :username, class: "font-weight-bold" %>
+        <%= form.text_field :username, placeholder: "Enter username", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :title, class: "font-weight-bold" %>
+        <%= form.text_field :title, placeholder: "Enter title", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :description, class: "font-weight-bold" %>
+        <%= form.text_field :description, placeholder: "Enter description", class: "form-control" %>
+      </div>
+    </li>
+  </ul>
+  <div class="card-footer">
+    <%= link_to "Cancel", user, class: 'btn btn-outline-secondary float-start' if user.persisted? %>
+    <%= link_to "Cancel", users_path, class: 'btn btn-outline-secondary float-start' if !user.persisted? %>
+    <%= form.submit "Save", class: "btn btn-primary float-end" if user.persisted? %>
+    <%= form.submit "Create", class: "btn btn-primary float-end" if !user.persisted? %>
+  </div>
+</div>
+<% end %>

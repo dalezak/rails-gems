@@ -87,3 +87,5 @@ gem "omniauth-github", "~> 2.0"
 gem "devise-bootstrap5", "~> 0.1.3"
 
 gem "bootstrap_form", "~> 5.0"
+
+gem "faker", "~> 2.19"
