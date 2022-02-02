@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     @users = query.limit(@limit).offset(@offset).order(created_at: :asc).all
     @users_count = query.count(:all) if request.format.html?
     respond_to do |format|
-      format.html { render layout: true }
+      format.html
       format.json
-      format.turbo_stream { }
+      format.turbo_stream
     end
   end
 

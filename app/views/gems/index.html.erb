@@ -7,7 +7,7 @@
 
 <%= turbo_frame_tag :gems do %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-    <%= render partial: 'gem', collection: @gems %>
+    <%= render partial: 'gem', collection: @gems, formats: [:html] %>
   </div>
 <% end %>
 
