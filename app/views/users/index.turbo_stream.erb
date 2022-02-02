@@ -1,0 +1,3 @@
+<%= turbo_stream.append :users do %>
+  <%= render partial: 'user', collection: @users, formats: [:html] %>
+<% end %>

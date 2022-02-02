@@ -1,0 +1,9 @@
+<% total ||= 0 %>
+<% count ||= 0 %>
+<% offset ||= 0 %>
+<% url ||= url_for(request.params.merge(offset: offset)) %>
+<% if count > total %>
+<div class="d-grid my-4">
+<%= link_to "Load More", url, class: "btn btn-block btn-outline-secondary btn-more" %>
+</div>
+<% end %>

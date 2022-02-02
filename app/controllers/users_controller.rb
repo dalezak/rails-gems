@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @users_count = query.count(:all) if request.format.html?
     respond_to do |format|
       format.html { render layout: true }
-      format.json { }
+      format.json
+      format.turbo_stream { }
     end
   end
 

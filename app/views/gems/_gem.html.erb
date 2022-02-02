@@ -1,0 +1,11 @@
+<div class="col">
+  <div class="card h-100">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to gem.name, gem_path(gem) %></h5>
+      <p class="card-text"><%= gem.title %></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"><%= gem.created_at %></small>
+    </div>
+  </div>
+</div>

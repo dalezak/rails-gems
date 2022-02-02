@@ -1,0 +1,3 @@
+<%= turbo_stream.append :gems do %>
+  <%= render partial: 'gem', collection: @gems, formats: [:html] %>
+<% end %>

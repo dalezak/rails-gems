@@ -13,6 +13,7 @@ class GemsController < ApplicationController
     respond_to do |format|
       format.html { render layout: true }
       format.json { }
+      format.turbo_stream { }
     end
   end
 
