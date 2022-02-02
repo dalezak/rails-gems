@@ -1,0 +1,48 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Gems", gems_path %></li>
+    <li class="breadcrumb-item active me-auto" aria-current="page"><%= @gem.name %></li> 
+    <%= render '/partials/breadcrumb/edit', model: @gem, url: edit_gem_path(@gem) %>
+  </ol>
+</nav>
+<div class="card">
+  <h5 class="card-header">Gem</h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <p class="fw-bold">Name</p>
+      <p class="fw-normal"><%= @gem.name %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Title</p>
+      <p class="fw-normal"><%= @gem.title %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Description</p>
+      <p class="fw-normal"><%= @gem.description %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Version</p>
+      <p class="fw-normal"><%= @gem.version %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Authors</p>
+      <p class="fw-normal"><%= @gem.authors.to_a.join(", ") %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Licenses</p>
+      <p class="fw-normal"><%= @gem.licenses.to_a.join(", ") %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Built</p>
+      <p class="fw-normal"><%= @gem.built_at %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Created</p>
+      <p class="fw-normal"><%= @gem.created_at %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Updated</p>
+      <p class="fw-normal"><%= @gem.updated_at %></p>
+    </li>
+  </ul>
+</div>

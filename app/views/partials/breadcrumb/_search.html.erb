@@ -1,0 +1,7 @@
+<% placeholder ||= "Search..." %>
+<%= form_tag current_url, method: :get, enforce_utf8: false, class: "input-search input-group input-group-sm" do %>
+  <%= text_field_tag :search, params[:search], placeholder: placeholder, type: 'text', class: "form-control" %>
+  <%= button_tag type: "submit", class: "btn btn-sm btn-outline-search" do %>
+  Search
+  <% end %>
+<% end %>

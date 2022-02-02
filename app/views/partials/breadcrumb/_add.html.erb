@@ -1,0 +1,8 @@
+<% remote ||= false %>
+<% if can?(:create, model) %>
+<% url ||= new_polymorphic_path(model) %>
+<%= link_to url, class: "btn btn-outline-secondary btn-sm ml-2", title: "Add #{model.try(:type_name) || model.to_s.underscore.titleize}", remote: remote do  %>
+<i class="fa fa-fw fas fa-plus"></i>
+<span class="d-none d-md-inline">Add <%= model.try(:type_name) || model.to_s.underscore.titleize %></span>
+<% end %>
+<% end %>

@@ -89,3 +89,7 @@ gem "devise-bootstrap5", "~> 0.1.3"
 gem "bootstrap_form", "~> 5.0"
 
 gem "faker", "~> 2.19"
+
+gem "gems"
+
+gem 'store_attribute'

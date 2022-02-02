@@ -7,6 +7,7 @@
 <%% end %>
 <%%= form_with(model: <%= model_resource_name %>, local: true) do |form| -%>
 <div class="card">
+  <h5 class="card-header"><%%= <%= singular_table_name %>.persisted? ? "Edit <%= singular_table_name.capitalize %>" : "Create <%= singular_table_name.capitalize %>" %></h5>
   <ul class="list-group list-group-flush">
 <% attributes.reject{|a| a.name == 'type' || a.name == 'deleted_at' || a.name.end_with?("_count")}.each do |attribute| -%>
     <li class="list-group-item">
@@ -14,10 +15,10 @@
 <% if attribute.password_digest? -%>
         <%%= form.label :password, class: "font-weight-bold" %>
         <%%= form.password_field :password, placeholder: "Enter password", class: "form-control" %>
-        <%%= form.label :password_confirmation, class: "font-weight-bold" %>
+        <%%= form.label :password_confirmation, class: "fw-bold" %>
         <%%= form.password_field :password_confirmation, placeholder: "Enter password confirmation", class: "form-control" %>
 <% else -%>
-        <%%= form.label :<%= attribute.column_name %>, class: "font-weight-bold" %>
+        <%%= form.label :<%= attribute.column_name %>, class: "fw-bold" %>
         <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, placeholder: "Enter <%= attribute.column_name %>", class: "form-control" %>
 <% end -%>
       </div>

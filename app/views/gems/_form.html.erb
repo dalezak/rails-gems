@@ -1,0 +1,74 @@
+<% if gem.errors.any? %>
+  <% gem.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
+  <% end %>
+<% end %>
+<%= form_with(model: gem, url: gem_path(gem), local: true) do |form| -%>
+<div class="card">
+  <h5 class="card-header"><%= gem.persisted? ? "Edit Gem" : "Create Gem" %></h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :uid, class: "fw-bold" %>
+        <%= form.text_field :uid, placeholder: "Enter uid", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :name, class: "fw-bold" %>
+        <%= form.text_field :name, placeholder: "Enter name", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :title, class: "fw-bold" %>
+        <%= form.text_field :title, placeholder: "Enter title", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :description, class: "fw-bold" %>
+        <%= form.text_area :description, placeholder: "Enter description", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :version, class: "fw-bold" %>
+        <%= form.text_field :version, placeholder: "Enter version", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :platform, class: "fw-bold" %>
+        <%= form.text_field :platform, placeholder: "Enter platform", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :authors, class: "fw-bold" %>
+        <%= form.text_field :authors, placeholder: "Enter authors", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :licenses, class: "fw-bold" %>
+        <%= form.text_field :licenses, placeholder: "Enter licenses", class: "form-control" %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :dependencies, class: "fw-bold" %>
+        <%= form.text_field :dependencies, placeholder: "Enter dependencies", class: "form-control" %>
+      </div>
+    </li>
+  </ul>
+  <div class="card-footer">
+    <%= link_to "Cancel", gem_path(gem), class: 'btn btn-outline-secondary float-start' if gem.persisted? %>
+    <%= link_to "Cancel", gems_path, class: 'btn btn-outline-secondary float-start' if !gem.persisted? %>
+    <%= form.submit "Save", class: "btn btn-primary float-end" if gem.persisted? %>
+    <%= form.submit "Create", class: "btn btn-primary float-end" if !gem.persisted? %>
+  </div>
+</div>
+<% end %>

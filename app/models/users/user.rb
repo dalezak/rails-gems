@@ -1,11 +1,15 @@
 class User < ApplicationRecord
   
+  include ::Typeable
+  
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :validatable
 
+  # store_attribute :details, :extra, :string
+  
   has_many :identities, dependent: :destroy
   
-  scope :for_search, ->(query) { where(email: query).or(where(name: query.downcase)).or(where(username: query.downcase)) if query.present? }
+  scope :for_search, ->(query) { where(email: query).or(where("name ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query))).or(where(username: query.downcase)) if query.present? }
 
   def self.from_omniauth(auth)
     if auth.present? && auth.provider.present? && auth.uid.present?

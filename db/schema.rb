@@ -10,11 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_125525) do
+ActiveRecord::Schema.define(version: 2022_02_02_182328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "gems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type", default: "Gemm"
+    t.integer "uid"
+    t.string "name"
+    t.text "title"
+    t.text "description"
+    t.integer "size"
+    t.string "version"
+    t.string "platform"
+    t.jsonb "details", default: {}
+    t.jsonb "authors", default: [], array: true
+    t.jsonb "licenses", default: [], array: true
+    t.jsonb "dependencies", default: [], array: true
+    t.integer "users_count", default: 0
+    t.datetime "built_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_gems_on_name"
+    t.index ["uid"], name: "index_gems_on_uid"
+  end
 
   create_table "identities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false

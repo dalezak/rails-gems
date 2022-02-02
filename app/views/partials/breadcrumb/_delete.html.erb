@@ -1,0 +1,8 @@
+<% if can?(:destroy, model) %>
+<% url ||= polymorphic_path(model) %>
+<% label = model.try(:type_name) || model.class.superclass.name %>
+<%= link_to url, method: :delete, class: "btn btn-outline-danger btn-sm ml-2", title: "Delete #{label}", data: { confirm: "Delete #{label}?" } do %>
+<i class="fa fa-fw fas fa-trash-alt"></i>
+<span class="d-none d-md-inline">Delete <%= label %></span>
+<% end %>
+<% end %>

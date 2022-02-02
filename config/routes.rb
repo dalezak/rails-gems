@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   
+  resources :gems
+  
   root "pages#index"
 end

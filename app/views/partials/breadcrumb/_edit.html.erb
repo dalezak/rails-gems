@@ -1,0 +1,8 @@
+<% if can?(:edit, model) %>
+<% url ||= edit_polymorphic_path(model) %>
+<% label = model.try(:type_name) || model.class.superclass.name %>
+<%= link_to url, class: "btn btn-outline-secondary btn-sm ml-2", title: "Edit #{label}" do %>
+<i class="fa fa-fw fas fa-edit"></i>
+<span class="d-none d-md-inline">Edit <%= label %></span>
+<% end %>
+<% end %>

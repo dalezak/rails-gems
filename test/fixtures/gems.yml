@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  name: MyString
+  title: MyString
+  description: MyText
+  authors: 
+  licenses: 
+  size: 1
+  built_at: 2022-02-02 12:23:28
+  version: MyString
+  platform: MyString
+  details: 
+  dependencies: 
+  users_count: 1
+
+two:
+  uid: MyString
+  name: MyString
+  title: MyString
+  description: MyText
+  authors: 
+  licenses: 
+  size: 1
+  built_at: 2022-02-02 12:23:28
+  version: MyString
+  platform: MyString
+  details: 
+  dependencies: 
+  users_count: 1
