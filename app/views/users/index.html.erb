@@ -10,5 +10,5 @@
     <%= render partial: '/users/user', collection: @users, as: :user %>
     <div id="user_cards"></div>
   </div>
-  <%= render partial: "/partials/load_more", locals: { total: @users.length, count: @users_count, offset: @offset + @limit } %>
+  <%= render partial: "/partials/load_more", locals: { count: @users_count, offset: @offset + @limit } %>
 <% end %>

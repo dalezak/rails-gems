@@ -10,5 +10,5 @@
     <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
     <div id="gem_cards"></div>
   </div>
-  <%= render partial: "/partials/load_more", locals: { total: @gems.length, count: @gems_count, offset: @offset + @limit } %>
+  <%= render partial: "/partials/load_more", locals: { count: @gems_count, offset: @offset + @limit } %>
 <% end %>
