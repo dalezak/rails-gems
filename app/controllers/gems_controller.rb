@@ -11,9 +11,9 @@ class GemsController < ApplicationController
     @gems = query.limit(@limit).offset(@offset).order(created_at: :asc).all
     @gems_count = query.count(:all) if request.format.html?
     respond_to do |format|
-      format.html
-      format.json
-      format.turbo_stream
+      format.html { }
+      format.json { }
+      format.turbo_stream { }
     end
   end
 

@@ -1,3 +1,7 @@
-<%= turbo_stream.append :users do %>
-  <%= render partial: 'user', collection: @users %>
+<%= turbo_stream.replace :users do %>
+  <%= render partial: '/users/user', collection: @users, as: :user %>
+  <%= turbo_frame_tag :users do %><% end %>
+<% end %>
+<%= turbo_stream.update :load_more do %>
+  <%= render partial: "/partials/load_more", locals: { total: @users.length, count: @users_count, offset: @offset + @limit } %>
 <% end %>
