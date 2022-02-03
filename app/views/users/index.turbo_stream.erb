@@ -1,3 +1,6 @@
+<%= turbo_stream.update :offset do %>
+  <h1><%= @offset %></h1>
+<% end %>
 <%= turbo_stream.replace :users do %>
   <%= render partial: '/users/user', collection: @users, as: :user %>
   <%= turbo_frame_tag :users do %><% end %>
