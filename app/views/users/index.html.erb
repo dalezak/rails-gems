@@ -15,5 +15,5 @@
 </div>
 
 <%= turbo_frame_tag :load_more do %>
-  <%= render partial: "/partials/load_more", remote: true, locals: { total: @users.length, count: @users_count, offset: @offset + @limit } %>
+  <%= render partial: "/partials/load_more", locals: { total: @users.length, count: @users_count, offset: @offset + @limit } %>
 <% end %>
