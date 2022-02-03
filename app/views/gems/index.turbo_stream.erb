@@ -1,6 +1,6 @@
-<%= turbo_stream.replace :gems do %>
+<%= turbo_stream.replace 'gem_cards' do %>
   <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
-  <%= turbo_frame_tag :gems do %><% end %>
+  <div id="gem_cards"></div>
 <% end %>
 <%= turbo_stream.update :load_more do %>
   <%= render partial: "/partials/load_more", locals: { total: @gems.length, count: @gems_count, offset: @offset + @limit } %>

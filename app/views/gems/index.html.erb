@@ -5,11 +5,10 @@
   </ol>
 </nav>
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-  <%= render partial: 'gem', collection: @gems %>
-  <%= turbo_frame_tag :gems do %><% end %>
-</div>
-
-<%= turbo_frame_tag :load_more do %>
+<%= turbo_frame_tag "gems" do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
+    <div id="gem_cards"></div>
+  </div>
   <%= render partial: "/partials/load_more", locals: { total: @gems.length, count: @gems_count, offset: @offset + @limit } %>
 <% end %>
