@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
 
-  resources :users do
+  resources :users, path: :devs do
   end  
   
   resources :gems do

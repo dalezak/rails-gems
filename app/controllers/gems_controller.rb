@@ -6,7 +6,7 @@ class GemsController < ApplicationController
     authorize! :index, Gem
     @search = params.fetch(:search, nil)
     @offset = params.fetch(:offset, 0).to_i
-    @limit = [params.fetch(:limit, 12).to_i, 48].min
+    @limit = [params.fetch(:limit, 24).to_i, 48].min
     query = Gemm.for_search(@search)
     @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc)
     @gems_count = query.count(:all) if request.format.html?
