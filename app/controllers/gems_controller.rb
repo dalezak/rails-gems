@@ -8,7 +8,7 @@ class GemsController < ApplicationController
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 12).to_i, 48].min
     query = Gemm.for_search(@search)
-    @gems = query.limit(@limit).offset(@offset).order(created_at: :asc)
+    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc)
     @gems_count = query.count(:all) if request.format.html?
     if user_signed_in?
       @likes = Like.for_user(current_user).for_gems(@gems).all

@@ -4,3 +4,9 @@
     <p class="col-md-8 fs-4">Discover what gems your favorite developers use, share the gems that you love.</p>
   </div>
 </div>
+
+<%= turbo_frame_tag "gems" do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
+  </div>
+<% end %>

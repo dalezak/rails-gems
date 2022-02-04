@@ -8,13 +8,12 @@
       <div class="card-footer">
         <% if user_signed_in? %>
           <% if gem.liked? %>
-            <%= button_to "Liked", unlike_gem_path(gem), method: :delete, title: "Liked", class: "btn btn-block btn-sm btn-secondary" %>
+            <%= button_to "Liked", unlike_gem_path(gem), method: :delete, title: "Liked", class: "float-end btn btn-block btn-sm btn-secondary" %>
           <% else %>
-            <%= button_to "Like", like_gem_path(gem), method: :post, title: "Like", class: "btn btn-block btn-sm btn-outline-secondary" %>
+            <%= button_to "Like", like_gem_path(gem), method: :post, title: "Like", class: "float-end btn btn-block btn-sm btn-outline-secondary" %>
           <% end %>
-        <% else %>
-          <small class="text-muted"><%= pluralize(gem.likes_count, "like") %></small>
         <% end %>
+        <small class="text-muted"><%= pluralize(gem.likes_count, "like") %></small>
       </div>
     </div>
   </div>
