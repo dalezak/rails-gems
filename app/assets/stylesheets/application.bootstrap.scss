@@ -16,3 +16,14 @@
 .input-search {
   width: 200px;
 }
+
+.banner-phrase {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  transition: opacity 1s;
+
+  &.fade {
+    opacity: 0;
+  }
+}
