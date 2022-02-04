@@ -7,6 +7,6 @@ import {
 } from "./application"
 
 import TurboController from "./turbo_controller"
-import BannerController from "./banner_controller"
+import MarqueeController from "./marquee_controller"
 application.register("turbo", TurboController)
-application.register("banner", BannerController)
+application.register("marquee", MarqueeController)
