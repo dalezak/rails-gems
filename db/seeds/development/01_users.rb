@@ -1,13 +1,12 @@
 (0..rand(25..50)).each_with_index do |index|
   name = Faker::Name.name
-  password = Devise.friendly_token
   student = User.create!(
-    email: Faker::Internet.email, 
+    email: "user-#{index+1}@gmail.com", 
     name: name, 
     username: name.parameterize,
     title: Faker::Hipster.sentence,
     description: Faker::Hipster.paragraph,
-    password: password, 
-    password_confirmation: password)
+    password: "password", 
+    password_confirmation: "password")
   puts student.inspect 
 end  

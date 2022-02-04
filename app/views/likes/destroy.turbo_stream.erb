@@ -1,0 +1,3 @@
+<%= turbo_stream.replace @gem do %>
+  <%= render partial: '/gems/gem', locals: { gem: @gem } %>
+<% end %>

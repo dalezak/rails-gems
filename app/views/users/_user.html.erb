@@ -6,7 +6,7 @@
         <p class="card-text"><%= user.title || user.description %></p>
       </div>
       <div class="card-footer">
-        <small class="text-muted"><%= user.created_at %></small>
+        <small class="text-muted"><%= pluralize(user.likes_count, "like") %></small>
       </div>
     </div>
   <% end %>

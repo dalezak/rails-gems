@@ -41,6 +41,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.jsonb :details, default: {}
       t.jsonb :image_data
 
+      t.integer :likes_count, default: 0
+
       t.timestamps null: false
     end
 

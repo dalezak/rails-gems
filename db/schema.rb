@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_182328) do
+ActiveRecord::Schema.define(version: 2022_02_03_195449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_182328) do
     t.jsonb "authors", default: [], array: true
     t.jsonb "licenses", default: [], array: true
     t.jsonb "dependencies", default: [], array: true
-    t.integer "users_count", default: 0
+    t.integer "likes_count", default: 0
     t.datetime "built_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2022_02_02_182328) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "likes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "gem_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gem_id"], name: "index_likes_on_gem_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_182328) do
     t.text "description"
     t.jsonb "details", default: {}
     t.jsonb "image_data"
+    t.integer "likes_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "invitation_token"
@@ -92,4 +102,6 @@ ActiveRecord::Schema.define(version: 2022_02_02_182328) do
   end
 
   add_foreign_key "identities", "users"
+  add_foreign_key "likes", "gems"
+  add_foreign_key "likes", "users"
 end

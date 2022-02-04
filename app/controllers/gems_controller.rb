@@ -8,8 +8,14 @@ class GemsController < ApplicationController
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 12).to_i, 48].min
     query = Gemm.for_search(@search)
-    @gems = query.limit(@limit).offset(@offset).order(created_at: :asc).all
+    @gems = query.limit(@limit).offset(@offset).order(created_at: :asc)
     @gems_count = query.count(:all) if request.format.html?
+    if user_signed_in?
+      @likes = Like.for_user(current_user).for_gems(@gems).all
+      @gems.each do |gem|
+        gem.liked = @likes.any? {|like| like.gem_id == gem.id }
+      end
+    end
     respond_to do |format|
       format.html { }
       format.json { }
@@ -64,7 +70,7 @@ class GemsController < ApplicationController
       format.html { redirect_to gems_url, notice: 'Gem was successfully deleted.' }
       format.json { head :no_content }
     end
-  end
+  end 
 
   private
 
@@ -73,7 +79,7 @@ class GemsController < ApplicationController
   end
 
   def gem_params
-    params.require(:gem).permit(:uid, :name, :title, :description, :authors, :licenses, :size, :built_at, :version, :platform, :details, :dependencies, :users_count)
+    params.require(:gem).permit(:uid, :name, :title, :description, :authors, :licenses, :size, :built_at, :version, :platform, :details, :dependencies)
   end
 
 end

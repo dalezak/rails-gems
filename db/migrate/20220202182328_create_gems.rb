@@ -18,6 +18,8 @@ class CreateGems < ActiveRecord::Migration[7.0]
       t.jsonb :licenses, default: [], array: true
       t.jsonb :dependencies, default: [], array: true
 
+      t.integer :likes_count, default: 0
+
       t.timestamp :built_at
       t.timestamps
     end

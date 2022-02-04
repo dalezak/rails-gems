@@ -1,7 +1,7 @@
 Gems.most_downloaded.each do |items|
   data = items.first
   gem = Gemm.find_or_initialize_by(uid: data["id"])
-  gem.name = data["full_name"]
+  gem.name = data["full_name"].gsub("-#{data["number"]}", "")
   gem.title = data["summary"]
   gem.description = data["description"]
   gem.size = data["size"]
