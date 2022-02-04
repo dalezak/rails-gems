@@ -13,7 +13,7 @@
           <%= link_to "View Devs", users_path, class: "btn btn-outline-secondary" %>
         </div>  
       </div>
-      <div class="col-12 col-sm-4 col-md-6 col-lg-8">
+      <div class="col-12 col-sm-4 col-md-6 col-lg-4">
         <%= form_tag gems_path, method: :get, enforce_utf8: false do %>
           <%= text_field_tag :search, "", placeholder: "Search for gems...", type: 'text', class: "form-control" %>
         <% end %>

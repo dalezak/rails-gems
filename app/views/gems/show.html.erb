@@ -5,44 +5,28 @@
     <%= render '/partials/breadcrumb/edit', model: @gem, url: edit_gem_path(@gem) %>
   </ol>
 </nav>
-<div class="card">
-  <h5 class="card-header">Gem</h5>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <p class="fw-bold">Name</p>
-      <p class="fw-normal"><%= @gem.name %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Title</p>
-      <p class="fw-normal"><%= @gem.title %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Description</p>
-      <p class="fw-normal"><%= @gem.description %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Version</p>
-      <p class="fw-normal"><%= @gem.version %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Authors</p>
-      <p class="fw-normal"><%= @gem.authors.to_a.join(", ") %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Licenses</p>
-      <p class="fw-normal"><%= @gem.licenses.to_a.join(", ") %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Built</p>
-      <p class="fw-normal"><%= @gem.built_at %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Created</p>
-      <p class="fw-normal"><%= @gem.created_at %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Updated</p>
-      <p class="fw-normal"><%= @gem.updated_at %></p>
-    </li>
-  </ul>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h1 class="card-title"><%= @gem.name %></h1>
+    <h5 class="card-subtitle mb-2 text-muted"><%= @gem.title %></h5>
+    <p class="card-text"><%= @gem.description %></p>
+    <%= link_to("Homepage", @gem.homepage_uri, class: "card-link") if @gem.homepage_uri.present? %>
+    <%= link_to("Project", @gem.project_uri, class: "card-link") if @gem.project_uri.present? %>
+    <%= link_to("Funding", @gem.funding_uri, class: "card-link") if @gem.funding_uri.present? %>
+    <%= link_to("Wiki", @gem.wiki_uri, class: "card-link") if @gem.wiki_uri.present? %>
+    <%= link_to("Source", @gem.source_code_uri, class: "card-link") if @gem.source_code_uri.present? %>
+    <%= link_to("Documentation", @gem.documentation_uri, class: "card-link") if @gem.documentation_uri.present? %>
+    <%= link_to("Bug Tracker", @gem.bug_tracker_uri, class: "card-link") if @gem.bug_tracker_uri.present? %>
+    <%= link_to("Mailing List", @gem.mailing_list_uri, class: "card-link") if @gem.mailing_list_uri.present? %>
+  </div>
+  <div class="card-footer text-muted">
+    <% @gem.authors.to_a.each do |author| %>
+    <span class="badge bg-secondary"><%= author %></span>
+    <% end %>
+    <% @gem.licenses.to_a.each do |license| %>
+    <span class="badge bg-secondary"><%= license %></span>
+    <% end %>
+    <span class="badge bg-secondary"><%= @gem.version %></span>
+  </div>
 </div>

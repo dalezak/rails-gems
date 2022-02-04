@@ -9,8 +9,8 @@ class User < ApplicationRecord
   
   has_many :identities, dependent: :destroy
 
-  has_many :likes, inverse_of: :user, dependent: :destroy
-  has_many :gems, inverse_of: :user, class_name: "Gemm", foreign_key: "gem_id", through: :likes, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :gems, class_name: "Gemm", foreign_key: "gem_id", through: :likes, dependent: :destroy
   
   scope :for_search, ->(query) { where(email: query).or(where("name ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query))).or(where(username: query.downcase)) if query.present? }
 

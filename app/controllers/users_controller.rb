@@ -19,6 +19,22 @@ class UsersController < ApplicationController
 
   def show
     authorize! :show, @user
+    @offset = params.fetch(:offset, 0).to_i
+    @limit = [params.fetch(:limit, 24).to_i, 48].min
+    @gems = @user.gems.limit(@limit).offset(@offset).order(likes_count: :desc)
+    @gems_count = @user.likes_count
+    if user_signed_in?
+      @likes = Like.for_user(current_user).for_gems(@gems).all
+      @gems.each do |gem|
+        gem.liked = @likes.any? {|like| like.gem_id == gem.id }
+      end
+    end
+    respond_to do |format|
+      format.html { }
+      format.json { }
+      format.turbo_stream { }
+    end
+
   end
 
   def new

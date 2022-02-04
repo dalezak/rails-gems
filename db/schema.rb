@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
     t.string "name"
     t.text "title"
     t.text "description"
-    t.integer "size"
+    t.integer "size", default: 0
+    t.integer "downloads", default: 0
     t.string "version"
     t.string "platform"
     t.jsonb "details", default: {}
     t.jsonb "authors", default: [], array: true
     t.jsonb "licenses", default: [], array: true
-    t.jsonb "dependencies", default: [], array: true
     t.integer "likes_count", default: 0
     t.datetime "built_at"
     t.datetime "created_at", precision: 6, null: false

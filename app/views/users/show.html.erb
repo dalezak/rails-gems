@@ -3,25 +3,22 @@
     <li class="breadcrumb-item"><%= link_to "Devs", users_path %></li>
     <li class="breadcrumb-item active mr-auto" aria-current="page"><%= @user.name %></li> 
   </ol>
-</nav>  
-<div class="card">
-  <h5 class="card-header">User</h5>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <p class="fw-bold">Name</p>
-      <p class="fw-normal"><%= @user.name %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Username</p>
-      <p class="fw-normal"><%= @user.username %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Title</p>
-      <p class="fw-normal"><%= @user.title %></p>
-    </li>
-    <li class="list-group-item">
-      <p class="fw-bold">Description</p>
-      <p class="fw-normal"><%= @user.description %></p>
-    </li>
-  </ul>
+</nav>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h1 class="card-title"><%= @user.name %></h1>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @user.title %></h6>
+    <p class="card-text"><%= @user.description %></p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
 </div>
+
+<%= turbo_frame_tag "gems" do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
+    <div id="gem_cards"></div>
+  </div>
+  <%= render partial: "/partials/load_more", locals: { count: @gems_count, offset: @offset + @limit } %>
+<% end %>
