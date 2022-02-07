@@ -1,11 +1,16 @@
 class User < ApplicationRecord
   
   include ::Typeable
+  include ::Slugable
+  include ::Imageable
+  include ImageUploader::Attachment(:image)
   
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :validatable
 
-  # store_attribute :details, :extra, :string
+  store_attribute :details, :homepage_uri, :string
+  store_attribute :details, :github_uri, :string
+  store_attribute :details, :twitter_uri, :string
   
   has_many :identities, dependent: :destroy
 

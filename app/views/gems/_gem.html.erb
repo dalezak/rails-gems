@@ -3,7 +3,7 @@
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title"><%= link_to gem.name, gem_path(gem), data: { turbo_frame: "_top" } %></h5>
-        <p class="card-text"><%= gem.title %></p>
+        <p class="card-text"><%= gem.title.to_s.truncate(150) %></p>
       </div>
       <div class="card-footer">
         <% if user_signed_in? %>

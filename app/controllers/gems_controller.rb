@@ -25,6 +25,15 @@ class GemsController < ApplicationController
 
   def show
     authorize! :show, @gem
+    @offset = params.fetch(:offset, 0).to_i
+    @limit = [params.fetch(:limit, 24).to_i, 48].min
+    @users = @gem.users.limit(@limit).offset(@offset).order(created_at: :asc).all
+    @users_count = @gem.likes_count
+    respond_to do |format|
+      format.html { }
+      format.json { }
+      format.turbo_stream { }
+    end
   end
 
   def new

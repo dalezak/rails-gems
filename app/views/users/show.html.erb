@@ -7,11 +7,16 @@
 
 <div class="card mb-4">
   <div class="card-body">
+    <div class="ms-2 float-end">
+      <%= image_tag @user.image_url, alt: @user.name, class: 'img-100 rounded-circle', onerror: "this.src='/assets/user/user-100.png'" if @user.image.present? && @user.image.exists? %>
+      <%= image_tag 'user/user-100.png', class: 'img-100 rounded-circle', alt: @user.name if @user.image.nil? %>
+    </div>
     <h1 class="card-title"><%= @user.name %></h1>
-    <h6 class="card-subtitle mb-2 text-muted"><%= @user.title %></h6>
-    <p class="card-text"><%= @user.description %></p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <%= tag.h5 @user.title, class: "card-subtitle mb-2 text-muted" if @user.title.present? %>
+    <%= tag.p @user.description, class: "card-text" if @user.description.present? %>
+    <%= link_to "Homepage", @user.homepage_uri, class: "card-link", target: "_blank" if @user.homepage_uri.present? %>
+    <%= link_to "Github", @user.github_uri, class: "card-link", target: "_blank" if @user.github_uri.present? %>
+    <%= link_to "Twitter", @user.twitter_uri, class: "card-link", target: "_blank" if @user.twitter_uri.present? %>
   </div>
 </div>
 

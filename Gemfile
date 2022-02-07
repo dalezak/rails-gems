@@ -93,3 +93,11 @@ gem "faker", "~> 2.19"
 gem "gems"
 
 gem 'store_attribute'
+
+gem "shrine", "~> 3.4"
+
+gem "fastimage", "~> 2.2"
+
+gem "aws-sdk-s3", "~> 1.112"
+
+gem "image_processing", "~> 1.12"

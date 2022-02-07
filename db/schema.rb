@@ -18,23 +18,22 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
 
   create_table "gems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "type", default: "Gemm"
-    t.integer "uid"
+    t.string "slug"
     t.string "name"
     t.text "title"
     t.text "description"
-    t.integer "size", default: 0
-    t.integer "downloads", default: 0
     t.string "version"
     t.string "platform"
     t.jsonb "details", default: {}
     t.jsonb "authors", default: [], array: true
     t.jsonb "licenses", default: [], array: true
     t.integer "likes_count", default: 0
+    t.integer "downloads_count", default: 0
     t.datetime "built_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_gems_on_name"
-    t.index ["uid"], name: "index_gems_on_uid"
+    t.index ["slug"], name: "index_gems_on_slug"
   end
 
   create_table "identities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -53,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
   end
 
   create_table "likes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
     t.uuid "gem_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gem_id"], name: "index_likes_on_gem_id"
@@ -73,12 +72,12 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "type", default: "User"
+    t.string "slug"
     t.string "name"
-    t.string "username"
     t.string "title"
     t.text "description"
-    t.jsonb "details", default: {}
     t.jsonb "image_data"
+    t.jsonb "details", default: {}
     t.integer "likes_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -97,8 +96,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by"
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug"
     t.index ["type"], name: "index_users_on_type"
-    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "identities", "users"

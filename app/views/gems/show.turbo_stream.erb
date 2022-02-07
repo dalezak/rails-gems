@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "user_cards" do %>
+  <%= render partial: '/users/user', collection: @users, as: :user %>
+  <div id="user_cards"></div>
+<% end %>
+<%= turbo_stream.replace "load_more" do %>
+  <%= render partial: "/partials/load_more", locals: { total: @users.length, count: @users_count, offset: @offset + @limit } %>
+<% end %>

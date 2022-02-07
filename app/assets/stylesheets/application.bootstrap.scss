@@ -27,3 +27,21 @@
     opacity: 0;
   }
 }
+
+img {
+  &.img-50 {
+    width: 50px;
+  }
+
+  &.img-72 {
+    width: 72px;
+  }
+
+  &.img-100 {
+    width: 100px;
+  }
+
+  &.img-150 {
+    width: 150px;
+  }
+}
