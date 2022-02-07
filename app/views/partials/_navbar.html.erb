@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to current_site, root_path, title: current_site, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menu">
@@ -11,10 +11,22 @@
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%= link_to "Logout", destroy_user_session_path, class: "nav-link" %>
+          <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-secondary" do %>
+            <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
+          <% end %>
         <% else %>
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <%= link_to "Signup", new_user_registration_path, class: "nav-link" %>
+          <div class="dropdown">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownSignin" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= tag.i "", class: "fas fa-sign-in-alt" %> Signin
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSignin">
+              <li>
+                <%= link_to user_github_omniauth_authorize_path, method: :post, class: 'dropdown-item' do %>
+                  <%= tag.i "", class: "fab fa-github" %> Signin with Github
+                <% end %>
+              </li>
+            </ul>
+          </div>
         <% end %>
       </ul>
     </div>

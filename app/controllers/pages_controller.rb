@@ -1,9 +1,8 @@
 class PagesController < ApplicationController
   
   def index
-    query = Gemm.for_search("")
-    @gems = query.limit(24).offset(0).order(likes_count: :desc)
-    @gems_count = query.count(:all) if request.format.html?
+    @users = User.limit(12).order(likes_count: :desc)
+    @gems = Gemm.for_search("").limit(12).order(likes_count: :desc)
     if user_signed_in?
       @likes = Like.for_user(current_user).for_gems(@gems).all
       @gems.each do |gem|

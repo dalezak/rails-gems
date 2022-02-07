@@ -1,7 +1,8 @@
 .btn-outline-search {
   border-color: #ced4da;
-}
+  background-color: rgba($light, 0.75);
 
-.input-search {
-  width: 200px;
+  &:hover {
+    background-color: rgba($light, 1.50);
+  }
 }

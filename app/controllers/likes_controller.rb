@@ -6,6 +6,7 @@ class LikesController < ApplicationController
       flash[:notice] = "You can not like more than once"
     else
       @like = Like.create(gem: @gem, user: current_user)
+      @gem.reload
       @gem.liked = true
     end
     respond_to do |format|
@@ -18,9 +19,10 @@ class LikesController < ApplicationController
     if already_liked?
       @like = Like.for_user(current_user).for_gem(@gem).first
       @like.destroy
+      @gem.reload
       @gem.liked = false
     else
-      flash[:notice] = "You can not unlike this"
+      flash[:notice] = "You have not liked this yet"
     end
     respond_to do |format|
       format.html { redirect_to gem_path(@gem) }

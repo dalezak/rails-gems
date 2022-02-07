@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end  
   
+  get "/", to: "pages#index", as: :home
+  get "/health", to: "pages#health", as: :health
+  
   root "pages#index"
 end

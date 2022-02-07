@@ -1,8 +1,5 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active me-auto" aria-current="page">Gems</li>
-    <%= render '/partials/breadcrumb/search' %>
-  </ol>
+<nav aria-label="search">
+  <%= render '/partials/search', placeholder: "Search gems..." %>
 </nav>
 
 <%= turbo_frame_tag "gems" do %>

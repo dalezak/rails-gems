@@ -1,8 +1,5 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active me-auto" aria-current="page">Devs</li>
-    <%= render '/partials/breadcrumb/search' %>
-  </ol>
+<nav aria-label="search">
+  <%= render '/partials/search', placeholder: "Search devs..." %>
 </nav>
 
 <%= turbo_frame_tag "users" do %>

@@ -7,6 +7,8 @@
     title: Faker::Hipster.sentence,
     description: Faker::Hipster.paragraph,
     image_remote_url: "https://randomuser.me/api/portraits/#{['men','women'].sample}/#{index}.jpg",
+    homepage_uri: Faker::Internet.url,
+    twitter_uri: "https://twitter.com/#{name.parameterize}",
     password: "password", 
     password_confirmation: "password")
   puts student.inspect 

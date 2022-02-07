@@ -5,25 +5,37 @@
     <div class="row">
       <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="d-grid mb-3 mb-sm-0">
-          <%= link_to "Browse Gems", gems_path, class: "btn btn-outline-secondary" %>
+          <%= link_to "Browse Gems", gems_path, class: "btn btn-primary" %>
         </div>
       </div>
       <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="d-grid mb-3 mb-sm-0">
-          <%= link_to "View Devs", users_path, class: "btn btn-outline-secondary" %>
+          <%= link_to "Search Devs", users_path, class: "btn btn-secondary" %>
         </div>  
       </div>
       <div class="col-12 col-sm-4 col-md-6 col-lg-4">
         <%= form_tag gems_path, method: :get, enforce_utf8: false do %>
-          <%= text_field_tag :search, "", placeholder: "Search for gems...", type: 'text', class: "form-control" %>
+          <%= text_field_tag :search, "", placeholder: "Search gems...", type: 'text', class: "form-control" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<%= turbo_frame_tag "gems" do %>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-    <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
-  </div>
-<% end %>
+<h4 class="text-center mt-5 mb-2">Popular Gems</h4>
+<h6 class="text-center mb-3">Browse through the <%= link_to 'gems', gems_path, title: 'All Gems' %> that other developers love.</h6>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+  <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
+</div>
+
+<hr class="bg-secondary border-2 border-top border-secondary my-5">
+
+<h4 class="text-center mt-5 mb-2">Active Users</h4>
+<h6 class="text-center mb-3">Search through the <%= link_to 'devs', users_path, title: 'All Devs' %> to find others with similar likes.</h6>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+  <%= render partial: '/users/user', collection: @users, as: :user %>
+</div>
+
+<hr class="bg-secondary border-2 border-top border-secondary my-5">

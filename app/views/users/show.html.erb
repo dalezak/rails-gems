@@ -1,10 +1,3 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Devs", users_path %></li>
-    <li class="breadcrumb-item active mr-auto" aria-current="page"><%= @user.name %></li> 
-  </ol>
-</nav>
-
 <div class="card mb-4">
   <div class="card-body">
     <div class="ms-2 float-end">
@@ -17,6 +10,12 @@
     <%= link_to "Homepage", @user.homepage_uri, class: "card-link", target: "_blank" if @user.homepage_uri.present? %>
     <%= link_to "Github", @user.github_uri, class: "card-link", target: "_blank" if @user.github_uri.present? %>
     <%= link_to "Twitter", @user.twitter_uri, class: "card-link", target: "_blank" if @user.twitter_uri.present? %>
+  </div>
+    <div class="card-footer text-muted">
+    <%= tag.span class: "badge bg-secondary" do %>
+      <%= tag.i "", class: "fas fa-heart" %>
+      <%= pluralize(@user.likes_count, "likes") %>
+    <% end %>
   </div>
 </div>
 

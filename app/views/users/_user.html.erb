@@ -10,7 +10,10 @@
         <p class="card-text"><%= (user.title || user.description).to_s.truncate(150) %></p>
       </div>
       <div class="card-footer">
-        <small class="text-muted"><%= pluralize(user.likes_count, "like") %></small>
+        <%= tag.span class: "text-muted align-middle" do %>
+          <%= tag.i "", class: "fas fa-heart" %>
+          <%= user.likes_count %>
+        <% end %>
       </div>
     </div>
   <% end %>

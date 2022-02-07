@@ -1,11 +1,3 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Gems", gems_path %></li>
-    <li class="breadcrumb-item active me-auto" aria-current="page"><%= @gem.name %></li> 
-    <%= render '/partials/breadcrumb/edit', model: @gem, url: edit_gem_path(@gem) %>
-  </ol>
-</nav>
-
 <div class="card mb-4">
   <div class="card-body">
     <%= tag.h1 @gem.name, class: "card-title" %>
@@ -21,14 +13,26 @@
     <%= link_to("Mailing List", @gem.mailing_list_uri, class: "card-link") if @gem.mailing_list_uri.present? %>
   </div>
   <div class="card-footer text-muted">
+    <%= tag.span class: "badge bg-secondary" do %>
+      <%= tag.i "", class: "fas fa-heart" %>
+      <%= pluralize(@gem.likes_count, "likes") %>
+    <% end %>
     <% @gem.authors.to_a.each do |author| %>
-      <%= tag.span author, class: "badge bg-secondary" %>
-    <span class="badge bg-secondary"><%= author %></span>
+      <%= tag.span class: "badge bg-secondary" do %>
+        <%= tag.i "", class: "fas fa-user-cog" %>
+        <%= author %>
+      <% end %>
     <% end %>
     <% @gem.licenses.to_a.each do |license| %>
-      <%= tag.span license, class: "badge bg-secondary" %>
+      <%= tag.span class: "badge bg-secondary" do %>
+        <%= tag.i "", class: "fas fa-file-alt" %>
+        <%= license %>
+      <% end %>
     <% end %>
-    <%= tag.span @gem.version, class: "badge bg-secondary" %>
+    <%= tag.span class: "badge bg-secondary" do %>
+      <%= tag.i "", class: "fas fa-cog" %>
+      <%= @gem.version %>
+    <% end if @gem.version.present? %>
   </div>
 </div>
 
