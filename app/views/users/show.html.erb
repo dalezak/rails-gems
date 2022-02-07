@@ -11,7 +11,7 @@
       <%= image_tag @user.image_url, alt: @user.name, class: 'img-100 rounded-circle', onerror: "this.src='/assets/user/user-100.png'" if @user.image.present? && @user.image.exists? %>
       <%= image_tag 'user/user-100.png', class: 'img-100 rounded-circle', alt: @user.name if @user.image.nil? %>
     </div>
-    <h1 class="card-title"><%= @user.name %></h1>
+    <%= tag.h1 @user.name, class: "card-title" %>
     <%= tag.h5 @user.title, class: "card-subtitle mb-2 text-muted" if @user.title.present? %>
     <%= tag.p @user.description, class: "card-text" if @user.description.present? %>
     <%= link_to "Homepage", @user.homepage_uri, class: "card-link", target: "_blank" if @user.homepage_uri.present? %>
@@ -20,10 +20,4 @@
   </div>
 </div>
 
-<%= turbo_frame_tag "gems" do %>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-    <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
-    <div id="gem_cards"></div>
-  </div>
-  <%= render partial: "/partials/load_more", locals: { count: @gems_count, offset: @offset + @limit } %>
-<% end %>
+<%= turbo_frame_tag "gems", src: user_gems_path(@user), loading: :lazy %>

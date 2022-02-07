@@ -1,0 +1,10 @@
+.marquee {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  transition: opacity 1s;
+
+  &.fade {
+    opacity: 0;
+  }
+}

@@ -8,9 +8,9 @@
 
 <div class="card mb-4">
   <div class="card-body">
-    <h1 class="card-title"><%= @gem.name %></h1>
-    <h5 class="card-subtitle mb-2 text-muted"><%= @gem.title %></h5>
-    <p class="card-text"><%= @gem.description %></p>
+    <%= tag.h1 @gem.name, class: "card-title" %>
+    <%= tag.h5 @gem.title, class: "card-subtitle mb-2 text-muted" if @gem.title.present? %>
+    <%= tag.p @gem.description, class: "card-text" if @gem.description.present? %>
     <%= link_to("Homepage", @gem.homepage_uri, class: "card-link") if @gem.homepage_uri.present? %>
     <%= link_to("Project", @gem.project_uri, class: "card-link") if @gem.project_uri.present? %>
     <%= link_to("Funding", @gem.funding_uri, class: "card-link") if @gem.funding_uri.present? %>
@@ -22,19 +22,14 @@
   </div>
   <div class="card-footer text-muted">
     <% @gem.authors.to_a.each do |author| %>
+      <%= tag.span author, class: "badge bg-secondary" %>
     <span class="badge bg-secondary"><%= author %></span>
     <% end %>
     <% @gem.licenses.to_a.each do |license| %>
-    <span class="badge bg-secondary"><%= license %></span>
+      <%= tag.span license, class: "badge bg-secondary" %>
     <% end %>
-    <span class="badge bg-secondary"><%= @gem.version %></span>
+    <%= tag.span @gem.version, class: "badge bg-secondary" %>
   </div>
 </div>
 
-<%= turbo_frame_tag "users" do %>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-    <%= render partial: '/users/user', collection: @users, as: :user %>
-    <div id="user_cards"></div>
-  </div>
-  <%= render partial: "/partials/load_more", locals: { total: @users.length, count: @users_count, offset: @offset + @limit } %>
-<% end %>
+<%= turbo_frame_tag "users", src: gem_users_path(@gem), loading: :lazy %>

@@ -1,5 +1,6 @@
 class GemsController < ApplicationController
   # before_action :authenticate_user!
+  before_action :set_user, only: [:index]
   before_action :set_gem, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,7 +8,9 @@ class GemsController < ApplicationController
     @search = params.fetch(:search, nil)
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 24).to_i, 48].min
-    query = Gemm.for_search(@search)
+    query = Gemm.
+      for_user(@user).
+      for_search(@search)
     @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc)
     @gems_count = query.count(:all) if request.format.html?
     if user_signed_in?
@@ -25,15 +28,6 @@ class GemsController < ApplicationController
 
   def show
     authorize! :show, @gem
-    @offset = params.fetch(:offset, 0).to_i
-    @limit = [params.fetch(:limit, 24).to_i, 48].min
-    @users = @gem.users.limit(@limit).offset(@offset).order(created_at: :asc).all
-    @users_count = @gem.likes_count
-    respond_to do |format|
-      format.html { }
-      format.json { }
-      format.turbo_stream { }
-    end
   end
 
   def new
@@ -85,6 +79,12 @@ class GemsController < ApplicationController
 
   def set_gem
     @gem = Gemm.find(params[:id])
+  end
+
+  def set_user
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+    end
   end
 
   def gem_params

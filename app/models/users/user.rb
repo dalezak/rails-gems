@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :gems, class_name: "Gemm", foreign_key: "gem_id", through: :likes, dependent: :destroy
   
+  scope :for_gem, ->(gem) { joins(:likes).where(likes: { gem_id: gem.id }) if gem.present? }
   scope :for_search, ->(query) { where(email: query).or(where("name ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query))).or(where(username: query.downcase)) if query.present? }
 
   def self.from_omniauth(auth)
