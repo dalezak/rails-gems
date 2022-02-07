@@ -22,7 +22,11 @@
   </div>
 </div>
 
-<h4 class="text-center mt-5 mb-2">Popular Gems</h4>
+<div class="mt-4 text-muted text-center fw-light">
+  Looking for the official RubyGems website? Please visit <%= link_to "rubygems.org", "https://rubygems.org", target: "_blank" %>.
+</div>
+
+<h4 class="text-center mt-4 mb-2">Popular Gems</h4>
 <h6 class="text-center mb-3">Browse through the <%= link_to 'gems', gems_path, title: 'All Gems' %> that other developers love.</h6>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
@@ -37,5 +41,3 @@
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   <%= render partial: '/users/user', collection: @users, as: :user %>
 </div>
-
-<hr class="bg-secondary border-2 border-top border-secondary my-5">
