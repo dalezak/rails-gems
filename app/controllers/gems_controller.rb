@@ -1,6 +1,7 @@
 class GemsController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_user, only: [:index]
+  before_action :set_tag, only: [:index]
   before_action :set_gem, only: [:edit, :update, :destroy]
 
   def index
@@ -10,6 +11,7 @@ class GemsController < ApplicationController
     @limit = [params.fetch(:limit, 24).to_i, 48].min
     query = Gemm.
       with_tags(true).
+      for_tag(@tag).
       for_user(@user).
       for_search(@search)
     @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc).all
@@ -89,6 +91,12 @@ class GemsController < ApplicationController
   def set_user
     if params[:user_id].present?
       @user = User.find(params[:user_id])
+    end
+  end
+
+  def set_tag
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
     end
   end
 

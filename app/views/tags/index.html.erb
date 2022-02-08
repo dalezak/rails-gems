@@ -1,0 +1,11 @@
+<nav aria-label="search">
+  <%= render '/partials/search', placeholder: "Search tags..." %>
+</nav>
+
+<%= turbo_frame_tag "tags" do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <%= render partial: '/tags/card', collection: @tags, as: :tag %>
+    <div id="tag_cards"></div>
+  </div>
+  <%= render "/partials/load_more", count: @tags_count, offset: @offset + @limit %>
+<% end %>

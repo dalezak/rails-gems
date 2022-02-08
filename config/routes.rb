@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
+
+  resources :tags do
+    resources :gems, only: [:index]
+  end
 
   resources :users, path: :devs do
     resources :gems, only: [:index]

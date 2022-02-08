@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "tag_cards" do %>
+  <%= render partial: '/tags/card', collection: @tags, as: :tag %>
+  <div id="tag_cards"></div>
+<% end %>
+<%= turbo_stream.replace "load_more" do %>
+  <%= render "/partials/load_more", total: @tags.length, count: @tags_count, offset: @offset + @limit %>
+<% end %>

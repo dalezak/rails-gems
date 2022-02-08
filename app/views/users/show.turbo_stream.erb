@@ -1,5 +1,5 @@
 <%= turbo_stream.replace "gem_cards" do %>
-  <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
+  <%= render partial: '/gems/card', collection: @gems, as: :gem %>
   <div id="gem_cards"></div>
 <% end %>
 <%= turbo_stream.replace "load_more" do %>

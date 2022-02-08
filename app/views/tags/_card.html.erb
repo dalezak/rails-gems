@@ -1,0 +1,13 @@
+  <div class="col h-100">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to tag.name, tag_path(tag), data: { turbo_frame: "_top" } %></h5>
+      </div>
+      <div class="card-footer">
+        <span class="badge bg-secondary">
+          <i class="fas fa-tag"></i>
+          <%= number_to_human(tag.taggings_count) %>
+        </span>
+      </div>
+    </div>
+  </div>

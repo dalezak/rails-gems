@@ -1,0 +1,7 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Tags", tags_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Add</li>
+  </ol>
+</nav>
+<%= render 'form', tag: @tag %>

@@ -1,0 +1,26 @@
+<% if tag.errors.any? %>
+  <% tag.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
+  <% end %>
+<% end %>
+<%= form_with(model: tag, local: true) do |form| -%>
+<div class="card">
+  <h5 class="card-header"><%= tag.persisted? ? "Edit Tag" : "Create Tag" %></h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= form.label :name, class: "fw-bold" %>
+        <%= form.text_field :name, placeholder: "Enter name", class: "form-control" %>
+      </div>
+    </li>
+  </ul>
+  <div class="card-footer">
+    <%= link_to "Cancel", tag, class: 'btn btn-outline-secondary float-start' if tag.persisted? %>
+    <%= link_to "Cancel", tags_path, class: 'btn btn-outline-secondary float-start' if !tag.persisted? %>
+    <%= form.submit "Save", class: "btn btn-primary float-end" if tag.persisted? %>
+    <%= form.submit "Create", class: "btn btn-primary float-end" if !tag.persisted? %>
+  </div>
+</div>
+<% end %>

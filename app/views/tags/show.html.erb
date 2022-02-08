@@ -1,0 +1,5 @@
+<%= turbo_frame_tag dom_id(@tag, :details) do %>
+  <%= render "/tags/details", tag: @tag %>
+<% end %>
+
+<%= turbo_frame_tag "gems", src: tag_gems_path(@tag), loading: :lazy %>

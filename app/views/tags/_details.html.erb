@@ -1,0 +1,11 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h1 class="card-title"><%= tag.name %></h1>
+  </div>
+  <div class="card-footer text-muted">
+     <span class="badge bg-secondary">
+      <i class="fas fa-tag"></i>
+      <%= number_to_human(tag.taggings_count) %>
+    </span>
+  </div>
+</div>
