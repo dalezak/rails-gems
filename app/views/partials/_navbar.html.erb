@@ -17,12 +17,12 @@
         <% else %>
           <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownSignin" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= tag.i "", class: "fas fa-sign-in-alt" %> Signin
+              <%= tag.i "", class: "fas fa-sign-in-alt" %> Sign in
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSignin">
               <li>
                 <%= link_to user_github_omniauth_authorize_path, method: :post, class: 'dropdown-item' do %>
-                  <%= tag.i "", class: "fab fa-github" %> Signin with Github
+                  <%= tag.i "", class: "fab fa-github" %> Sign in with Github
                 <% end %>
               </li>
             </ul>

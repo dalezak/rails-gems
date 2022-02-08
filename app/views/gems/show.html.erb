@@ -15,7 +15,13 @@
   <div class="card-footer text-muted">
     <%= tag.span class: "badge bg-secondary" do %>
       <%= tag.i "", class: "fas fa-heart" %>
-      <%= pluralize(@gem.likes_count, "likes") %>
+      <%= number_to_human(@gem.likes_count) %>
+      <%= "like".pluralize(@gem.likes_count) %>
+    <% end %>
+    <%= tag.span class: "badge bg-secondary" do %>
+      <%= tag.i "", class: "fas fa-download" %>
+      <%= number_to_human(@gem.downloads_count) %>
+      <%= "download".pluralize(@gem.downloads_count) %>
     <% end %>
     <% @gem.authors.to_a.each do |author| %>
       <%= tag.span class: "badge bg-secondary" do %>
