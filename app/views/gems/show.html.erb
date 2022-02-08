@@ -1,45 +1,5 @@
-<div class="card mb-4">
-  <div class="card-body">
-    <%= tag.h1 @gem.name, class: "card-title" %>
-    <%= tag.h5 @gem.title, class: "card-subtitle mb-2 text-muted" if @gem.title.present? %>
-    <%= tag.p @gem.description, class: "card-text" if @gem.description.present? %>
-    <%= link_to("Homepage", @gem.homepage_uri, class: "card-link") if @gem.homepage_uri.present? %>
-    <%= link_to("Project", @gem.project_uri, class: "card-link") if @gem.project_uri.present? %>
-    <%= link_to("Funding", @gem.funding_uri, class: "card-link") if @gem.funding_uri.present? %>
-    <%= link_to("Wiki", @gem.wiki_uri, class: "card-link") if @gem.wiki_uri.present? %>
-    <%= link_to("Source", @gem.source_code_uri, class: "card-link") if @gem.source_code_uri.present? %>
-    <%= link_to("Documentation", @gem.documentation_uri, class: "card-link") if @gem.documentation_uri.present? %>
-    <%= link_to("Bug Tracker", @gem.bug_tracker_uri, class: "card-link") if @gem.bug_tracker_uri.present? %>
-    <%= link_to("Mailing List", @gem.mailing_list_uri, class: "card-link") if @gem.mailing_list_uri.present? %>
-  </div>
-  <div class="card-footer text-muted">
-    <%= tag.span class: "badge bg-secondary" do %>
-      <%= tag.i "", class: "fas fa-heart" %>
-      <%= number_to_human(@gem.likes_count) %>
-      <%= "like".pluralize(@gem.likes_count) %>
-    <% end %>
-    <%= tag.span class: "badge bg-secondary" do %>
-      <%= tag.i "", class: "fas fa-download" %>
-      <%= number_to_human(@gem.downloads_count) %>
-      <%= "download".pluralize(@gem.downloads_count) %>
-    <% end %>
-    <% @gem.authors.to_a.each do |author| %>
-      <%= tag.span class: "badge bg-secondary" do %>
-        <%= tag.i "", class: "fas fa-user-cog" %>
-        <%= author %>
-      <% end %>
-    <% end %>
-    <% @gem.licenses.to_a.each do |license| %>
-      <%= tag.span class: "badge bg-secondary" do %>
-        <%= tag.i "", class: "fas fa-file-alt" %>
-        <%= license %>
-      <% end %>
-    <% end %>
-    <%= tag.span class: "badge bg-secondary" do %>
-      <%= tag.i "", class: "fas fa-cog" %>
-      <%= @gem.version %>
-    <% end if @gem.version.present? %>
-  </div>
-</div>
+<%= turbo_frame_tag dom_id(@gem, :details) do %>
+  <%= render "/gems/details", gem: @gem %>
+<% end %>
 
 <%= turbo_frame_tag "users", src: gem_users_path(@gem), loading: :lazy %>

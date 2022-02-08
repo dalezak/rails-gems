@@ -11,7 +11,7 @@
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-secondary" do %>
+          <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light" do %>
             <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
           <% end %>
         <% else %>

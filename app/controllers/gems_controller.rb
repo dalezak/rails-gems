@@ -1,7 +1,7 @@
 class GemsController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_user, only: [:index]
-  before_action :set_gem, only: [:show, :edit, :update, :destroy]
+  before_action :set_gem, only: [:edit, :update, :destroy]
 
   def index
     authorize! :index, Gem
@@ -9,9 +9,10 @@ class GemsController < ApplicationController
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 24).to_i, 48].min
     query = Gemm.
+      with_tags(true).
       for_user(@user).
       for_search(@search)
-    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc)
+    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc).all
     @gems_count = query.count(:all) if request.format.html?
     if user_signed_in?
       @likes = Like.for_user(current_user).for_gems(@gems).all
@@ -27,7 +28,11 @@ class GemsController < ApplicationController
   end
 
   def show
+    @gem = Gemm.with_tags(true).for_slug(params[:id]).first!
     authorize! :show, @gem
+    if user_signed_in?
+      @gem.liked = Like.for_user(current_user).for_gem(@gem).exists?
+    end  
   end
 
   def new
@@ -88,7 +93,15 @@ class GemsController < ApplicationController
   end
 
   def gem_params
-    params.require(:gem).permit(:uid, :name, :title, :description, :authors, :licenses, :size, :built_at, :version, :platform, :details, :dependencies)
+    params.require(:gem).permit(
+      :name, 
+      :title, 
+      :description, 
+      :authors, 
+      :licenses,
+      :version, 
+      :platform,
+      :tag_list)
   end
 
 end

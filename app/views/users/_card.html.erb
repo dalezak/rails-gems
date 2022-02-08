@@ -10,9 +10,9 @@
         <p class="card-text"><%= (user.title || user.description).to_s.truncate(150) %></p>
       </div>
       <div class="card-footer">
-        <%= tag.span class: "text-muted align-middle" do %>
+        <%= tag.span class: "badge bg-secondary" do %>
           <%= tag.i "", class: "fas fa-heart" %>
-          <%= user.likes_count %>
+          <%= number_to_human(user.likes_count) %>
         <% end %>
       </div>
     </div>

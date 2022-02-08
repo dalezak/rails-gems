@@ -53,6 +53,22 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+bootstrap.native@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/bootstrap.native/-/bootstrap.native-4.0.7.tgz#8177dc831def3abaf69692e923eb003474b425ca"
+  integrity sha512-Y7fWPIJnyCO8IS8zxASC8T/hGZhZcRWOYoL0aBhalsmcPab/7ZCe4TW4YU3BD3I6dghR5bWeekyODhoxrtuKIA==
+  dependencies:
+    minifill "^0.0.16"
+    shorter-js "^0.2.1"
+
+bootstrap5-tags@^1.4.22:
+  version "1.4.22"
+  resolved "https://registry.yarnpkg.com/bootstrap5-tags/-/bootstrap5-tags-1.4.22.tgz#60c19690953cf681185e5771893527304da34ec8"
+  integrity sha512-qf1ExjGCdgIW9i04x4n0K6/XPKJqFQGkLKACmFeC4OZPP51Ykm3WI0UIRvbYQrc9DGIu9ICjFlTEYpIGGr0ayg==
+  dependencies:
+    bootstrap "^5.1.3"
+    bootstrap.native "^4.0.7"
+
 bootstrap@^5.1.3:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.3.tgz#ba081b0c130f810fa70900acbc1c6d3c28fa8f34"
@@ -242,6 +258,11 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
+minifill@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/minifill/-/minifill-0.0.16.tgz#1999956127379e435b6653f3d3f2b70d64544789"
+  integrity sha512-ya61lgDqSRlaOVbD8neOkZMpMpmbfCbRewzJ/rfzc9nbisFthip3YcmBBL3fu+gneIKTrzcOG7mDysJh5ZDjqQ==
+
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
@@ -267,6 +288,11 @@ sass@^1.49.4:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
+
+shorter-js@^0.2.1:
+  version "0.2.24"
+  resolved "https://registry.yarnpkg.com/shorter-js/-/shorter-js-0.2.24.tgz#3a20a873cf2c20116ec0a1024f809c37a736fa9a"
+  integrity sha512-gHfrA0/D2DBLB8ARfjX5X6q2AKiGsGpvbDKYKIpJx1B1bhhJAwgDq18bHtcpmp461eF0lsnQzptA9WGtV3c9ew==
 
 "source-map-js@>=0.6.2 <2.0.0":
   version "1.0.1"

@@ -1,3 +1,6 @@
-<%= turbo_stream.replace @gem do %>
-  <%= render partial: '/gems/gem', locals: { gem: @gem } %>
+<%= turbo_stream.replace dom_id(@gem, :card) do %>
+  <%= render '/gems/card', gem: @gem %>
+<% end %>
+<%= turbo_stream.replace dom_id(@gem, :details) do %>
+  <%= render '/gems/details', gem: @gem %>
 <% end %>

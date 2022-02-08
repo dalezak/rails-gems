@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_195449) do
+ActiveRecord::Schema.define(version: 2022_02_08_161723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -27,12 +27,11 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
     t.jsonb "details", default: {}
     t.jsonb "authors", default: [], array: true
     t.jsonb "licenses", default: [], array: true
+    t.integer "tags_count", default: 0
     t.integer "likes_count", default: 0
     t.integer "downloads_count", default: 0
-    t.datetime "built_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_gems_on_name"
     t.index ["slug"], name: "index_gems_on_slug"
   end
 
@@ -58,6 +57,26 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gem_id"], name: "index_likes_on_gem_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "taggings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "gem_id", null: false
+    t.uuid "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gem_id", "tag_id"], name: "index_taggings_on_gem_id_and_tag_id", unique: true
+    t.index ["gem_id"], name: "index_taggings_on_gem_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug"
+    t.string "name"
+    t.integer "taggings_count", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name"
+    t.index ["slug"], name: "index_tags_on_slug"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -103,4 +122,6 @@ ActiveRecord::Schema.define(version: 2022_02_03_195449) do
   add_foreign_key "identities", "users"
   add_foreign_key "likes", "gems"
   add_foreign_key "likes", "users"
+  add_foreign_key "taggings", "gems"
+  add_foreign_key "taggings", "tags"
 end

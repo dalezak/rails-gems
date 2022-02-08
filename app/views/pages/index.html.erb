@@ -30,7 +30,7 @@
 <h6 class="text-center mb-3">Browse through the <%= link_to 'gems', gems_path, title: 'All Gems' %> that other developers love.</h6>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-  <%= render partial: '/gems/gem', collection: @gems, as: :gem %>
+  <%= render partial: '/gems/card', collection: @gems, as: :gem %>
 </div>
 
 <hr class="bg-secondary border-2 border-top border-secondary my-5">
@@ -39,5 +39,5 @@
 <h6 class="text-center mb-3">Search through the <%= link_to 'devs', users_path, title: 'All Devs' %> to find others with similar likes.</h6>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-  <%= render partial: '/users/user', collection: @users, as: :user %>
+  <%= render partial: '/users/card', collection: @users, as: :user %>
 </div>

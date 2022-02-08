@@ -11,12 +11,6 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
       <div class="form-group">
-        <%= form.label :uid, class: "fw-bold" %>
-        <%= form.text_field :uid, placeholder: "Enter uid", class: "form-control" %>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="form-group">
         <%= form.label :name, class: "fw-bold" %>
         <%= form.text_field :name, placeholder: "Enter name", class: "form-control" %>
       </div>
@@ -35,32 +29,8 @@
     </li>
     <li class="list-group-item">
       <div class="form-group">
-        <%= form.label :version, class: "fw-bold" %>
-        <%= form.text_field :version, placeholder: "Enter version", class: "form-control" %>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="form-group">
-        <%= form.label :platform, class: "fw-bold" %>
-        <%= form.text_field :platform, placeholder: "Enter platform", class: "form-control" %>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="form-group">
-        <%= form.label :authors, class: "fw-bold" %>
-        <%= form.text_field :authors, placeholder: "Enter authors", class: "form-control" %>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="form-group">
-        <%= form.label :licenses, class: "fw-bold" %>
-        <%= form.text_field :licenses, placeholder: "Enter licenses", class: "form-control" %>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="form-group">
-        <%= form.label :dependencies, class: "fw-bold" %>
-        <%= form.text_field :dependencies, placeholder: "Enter dependencies", class: "form-control" %>
+        <%= form.label :tags, class: "fw-bold" %>
+        <%= form.text_field :tag_list, placeholder: "Enter tags", class: "form-control tagsinput", data: { role: 'tagsinput' }, required: false %>
       </div>
     </li>
   </ul>
