@@ -5,6 +5,7 @@
       <%= safe_join(gem.tags.map { |tag| link_to(tag.name, tag_path(tag), data: { turbo_frame: "_top" }) }, ", ".html_safe) %>
     <% end if gem.tags.present? %>
     <%= tag.p gem.title, class: "card-text" if gem.title.present? %>
+    <%= link_to("RubyGems", "https://rubygems.org/gems/#{gem.name}", class: "card-link", target: "_top") %>
     <%= link_to("Homepage", gem.homepage_uri, class: "card-link", target: "_top") if gem.homepage_uri.present? %>
     <%= link_to("Project", gem.project_uri, class: "card-link", target: "_top") if gem.project_uri.present? %>
     <%= link_to("Funding", gem.funding_uri, class: "card-link", target: "_top") if gem.funding_uri.present? %>
