@@ -6,9 +6,9 @@ module Typeable
       name.underscore.humanize.titleize
     end
   end
-  
+
   def type_name
     self.type.underscore.humanize.titleize
   end
 
-end  
+end

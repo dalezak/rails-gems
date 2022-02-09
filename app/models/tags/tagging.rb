@@ -1,5 +1,5 @@
 class Tagging < ApplicationRecord
-  
+
   belongs_to :tag, counter_cache: :taggings_count
   belongs_to :gem, class_name: "Gemm", counter_cache: :tags_count
 

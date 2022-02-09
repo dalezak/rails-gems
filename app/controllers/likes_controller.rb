@@ -31,7 +31,7 @@ class LikesController < ApplicationController
   end
 
   private
- 
+
   def already_liked?
     Like.for_user(current_user).for_gem(@gem).exists?
   end

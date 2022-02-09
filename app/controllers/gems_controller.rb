@@ -34,7 +34,7 @@ class GemsController < ApplicationController
     authorize! :show, @gem
     if user_signed_in?
       @gem.liked = Like.for_user(current_user).for_gem(@gem).exists?
-    end  
+    end
   end
 
   def new
@@ -80,7 +80,7 @@ class GemsController < ApplicationController
       format.html { redirect_to gems_url, notice: 'Gem was successfully deleted.' }
       format.json { head :no_content }
     end
-  end 
+  end
 
   private
 
@@ -102,12 +102,12 @@ class GemsController < ApplicationController
 
   def gem_params
     params.require(:gem).permit(
-      :name, 
-      :title, 
-      :description, 
-      :authors, 
+      :name,
+      :title,
+      :description,
+      :authors,
       :licenses,
-      :version, 
+      :version,
       :platform,
       :tag_list)
   end

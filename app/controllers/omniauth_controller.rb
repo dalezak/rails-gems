@@ -1,5 +1,5 @@
 class OmniauthController < Devise::OmniauthCallbacksController
-  
+
   def github
     @user = User.from_omniauth request.env["omniauth.auth"]
     if @user.present?
@@ -11,6 +11,6 @@ class OmniauthController < Devise::OmniauthCallbacksController
     else
       redirect_to root_url, alert: "Unable to sign in via Github"
     end
-  end  
+  end
 
 end

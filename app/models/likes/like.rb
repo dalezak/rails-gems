@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
-  
+
   belongs_to :user, class_name: "User", counter_cache: "likes_count", touch: true
   belongs_to :gem, class_name: "Gemm", counter_cache: "likes_count", touch: true
 

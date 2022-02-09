@@ -176,9 +176,6 @@ Layout/SpaceInLambdaLiteral:
 Layout/SpaceInsideHashLiteralBraces:
   Enabled: false  
 
-Layout/TrailingWhitespace:
-  Enabled: false  
-
 Style/WhileUntilModifier:
   Enabled: false
 

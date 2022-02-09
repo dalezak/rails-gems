@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
   create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "slug"
     t.string "name"
+    t.jsonb "synonyms", default: [], array: true
     t.integer "taggings_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

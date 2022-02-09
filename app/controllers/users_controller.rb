@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    authorize! :show, @user 
+    authorize! :show, @user
   end
 
   def new

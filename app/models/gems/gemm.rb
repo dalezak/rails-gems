@@ -38,11 +38,11 @@ class Gemm < ApplicationRecord
   def self.tag_counts
     Tag.select("tags.*, count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
   end
-  
+
   def tag_list
     tags.map(&:name).join(", ")
   end
-  
+
   def tag_list=(names)
     self.tags = names.split(",").map do |name|
       Tag.where(name: name.strip.downcase).first_or_create!
@@ -77,9 +77,9 @@ class Gemm < ApplicationRecord
 
   def add_tags
     Tag.all_cached.each do |tag|
-      if self.title.downcase.split.include?(tag.name) && self.tags.exists?(tag.id) == false
+      if tag.synonym?(self.title) && self.tags.exists?(tag.id) == false
         self.taggings.create(tag: tag)
-      end  
+      end
     end
   end
 

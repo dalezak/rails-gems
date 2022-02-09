@@ -4,7 +4,7 @@ if Rails.env.development?
   logs.each do |log|
     log_size = File.size?(log).to_i
     if log_size > MAX_LOG_SIZE
-      puts "Removing Log: #{log}"
+      Rails.logger.debug { "Removing Log: #{log}" }
       `rm #{log}`
     end
   end

@@ -8,11 +8,20 @@ class Tag < ApplicationRecord
   scope :for_search, ->(query) { where("name ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query)) if query.present? }
 
   validates :name, uniqueness: true
-  
+
   def self.all_cached
     Rails.cache.fetch(["tags:all", Tag.maximum(:updated_at)]) do
       Tag.order(name: :asc).all.to_a
     end
   end
-  
+
+  def synonym?(sentence)
+    self.synonyms.each do |synonym|
+      if sentence.downcase.split.include?(synonym)
+        return true
+      end
+    end
+    false
+  end
+
 end
