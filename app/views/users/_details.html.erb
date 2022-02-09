@@ -15,5 +15,6 @@
     <%= render_badge(icon: "fas fa-heart") do %>
       <%= pluralize(user.likes_count, "likes") %>
     <% end %>
+    <%= render_match(user) if user_signed_in? %>
   </div>
 </div>

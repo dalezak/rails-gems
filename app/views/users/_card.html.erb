@@ -11,8 +11,9 @@
       </div>
       <div class="card-footer">
         <%= render_badge(icon: "fas fa-heart") do %>
-           <%= number_to_human(user.likes_count) %>
+          <%= number_to_human(user.likes_count) %>
         <% end %>
+        <%= render_match(user) if user_signed_in? %>
       </div>
     </div>
   <% end %>

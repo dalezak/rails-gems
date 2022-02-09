@@ -1,0 +1,4 @@
+<% intersection = user.gem_names & current_user.gem_names %>
+<%= render_badge(icon: "fas fa-grin-hearts") do %>
+  <%= intersection.size %>
+<% end %>

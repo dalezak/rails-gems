@@ -98,4 +98,10 @@ module ApplicationHelper
       locals: { gem: gem })
   end
 
+  def render_match(user)
+    render(
+      partial: '/partials/match',
+      locals: { user: user })
+  end
+
 end
