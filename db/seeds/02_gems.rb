@@ -1,12 +1,83 @@
-["rails", "devise", "cancancan", "omniauth", "shrine", "pg", "puma", "turbo-rails", "jbuilder", "redis", "turbo-rails", "cssbundling-rails", "jsbundling-rails", "rubocop"].each do |name|
+[
+  "aasm",
+  "action_policy",
+  "activeadmin",
+  "activemerchant",
+  "administrate",
+  "ahoy",
+  "anyway_config",
+  "better_errors",
+  "binding_of_caller",
+  "braintree",
+  "brakeman",
+  "bullet",
+  "bundler",
+  "bundler-audit",
+  "cancancan", 
+  "capistrano",
+  "capybara",
+  "carrierwave",
+  "chef",
+  "cssbundling-rails", 
+  "database_cleaner",
+  "devise", 
+  "discard",
+  "draper",
+  "elasticsearch-ruby",
+  "factory_bot",
+  "factory_girl",
+  "figaro",
+  "friendly_id",
+  "globalize",
+  "grape",
+  "haml",
+  "jbuilder", 
+  "jekyll-minimagick",
+  "jsbundling-rails", 
+  "kaminari",
+  "lefthook",
+  "lockbox",
+  "logidze",
+  "meta-tags",
+  "omniauth", 
+  "pagy",
+  "paperclip",
+  "papertrail",
+  "paranoia",
+  "pg", 
+  "pg_search",
+  "pry",
+  "puma",
+  "puma", 
+  "pundit",
+  "rack-attack",
+  "rails", 
+  "rails_admin",
+  "redis", 
+  "robocop",
+  "rolify",
+  "rubocop",
+  "ruby_jwt",
+  "secure_headers",
+  "shrine", 
+  "sidekiq",
+  "simple_form",
+  "simple_form",
+  "simplecov",
+  "slim",
+  "turbo-rails",
+  "turbo-rails", 
+  "unicorn-rails",
+  "webpacker"
+].each do |name|
   data = Gems.info name
   gem = Gemm.import data
   puts gem.inspect
 end
-Gems.most_downloaded.each do |items|
-  item = items.first
-  name = (item["name"] || item["full_name"]).gsub("-#{item['number']}", "")
-  data = Gems.info name
-  gem = Gemm.import data
-  puts gem.inspect
-end
+# Gems.most_downloaded.each do |items|
+#   item = items.first
+#   name = (item["name"] || item["full_name"]).gsub("-#{item['number']}", "")
+#   data = Gems.info name
+#   gem = Gemm.import data
+#   puts gem.inspect
+# end

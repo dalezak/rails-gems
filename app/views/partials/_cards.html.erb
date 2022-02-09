@@ -1,0 +1,10 @@
+<%
+  sm ||= 1
+  md ||= 2 
+  lg ||= 3
+  xl ||= 4
+  gap ||= 4
+%>
+<%= tag.div class: "row row-cols-#{sm} row-cols-md-#{md} row-cols-lg-#{lg} row-cols-xl-#{xl} g-#{gap}" do %>
+  <%= capture(&block) %>
+<% end %>

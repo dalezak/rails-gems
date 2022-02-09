@@ -307,3 +307,6 @@ Naming/VariableNumber:
 
 Naming/MemoizedInstanceVariableName:
   Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false

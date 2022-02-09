@@ -79,4 +79,12 @@ module ApplicationHelper
     end
     body.join(" ")
   end
+
+  def render_cards(sm: 1, md: 2, lg: 3, xl: 4, gap: 4, &block)
+    render(
+      partial: '/partials/cards',
+      locals: { sm: sm, md: md, lg: lg, xl: xl, gap: gap, block: block }
+    )
+  end
+
 end
