@@ -1,3 +1,6 @@
+<% title ["Devs", @user] %>
+<% description @user.title || @user.description %>
+
 <%= turbo_frame_tag dom_id(@user, :details) do %>
   <%= render "/users/details", user: @user %>
 <% end %>

@@ -1,3 +1,6 @@
+<% title ["Tags", @tag] %>
+<% description pluralize(@tag.taggings_count, "gem") %>
+
 <%= turbo_frame_tag dom_id(@tag, :details) do %>
   <%= render "/tags/details", tag: @tag %>
 <% end %>
