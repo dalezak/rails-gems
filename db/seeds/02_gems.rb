@@ -5,6 +5,7 @@
   "activemerchant",
   "administrate",
   "ahoy",
+  "annotate",
   "anyway_config",
   "better_errors",
   "binding_of_caller",
@@ -13,15 +14,19 @@
   "bullet",
   "bundler",
   "bundler-audit",
+  "byebug",
   "cancancan", 
   "capistrano",
   "capybara",
   "carrierwave",
+  "cells",
   "chef",
+  "config",
   "cssbundling-rails", 
   "database_cleaner",
   "devise", 
   "discard",
+  "dotenv",
   "draper",
   "elasticsearch-ruby",
   "factory_bot",
@@ -31,15 +36,20 @@
   "globalize",
   "grape",
   "haml",
+  "i18n-tasks",
   "jbuilder", 
   "jekyll-minimagick",
-  "jsbundling-rails", 
+  "jsbundling-rails",
+  "jwt",
   "kaminari",
   "lefthook",
   "lockbox",
   "logidze",
   "meta-tags",
+  "mina",
+  "money-rails",
   "omniauth", 
+  "overcommit",
   "pagy",
   "paperclip",
   "papertrail",
@@ -53,31 +63,37 @@
   "rack-attack",
   "rails", 
   "rails_admin",
+  "ransack",
   "redis", 
+  "resque",
   "robocop",
   "rolify",
+  "route_translator",
+  "rspec",
   "rubocop",
   "ruby_jwt",
+  "rubycritic",
   "secure_headers",
   "shrine", 
   "sidekiq",
   "simple_form",
-  "simple_form",
   "simplecov",
   "slim",
+  "sucker_punch",
+  "thinking-sphinx",
   "turbo-rails",
-  "turbo-rails", 
   "unicorn-rails",
-  "webpacker"
+  "webpacker",
+  "wicked"
 ].each do |name|
   data = Gems.info name
   gem = Gemm.import data
   puts gem.inspect
 end
-# Gems.most_downloaded.each do |items|
-#   item = items.first
-#   name = (item["name"] || item["full_name"]).gsub("-#{item['number']}", "")
-#   data = Gems.info name
-#   gem = Gemm.import data
-#   puts gem.inspect
-# end
+Gems.most_downloaded.each do |items|
+  item = items.first
+  name = (item["name"] || item["full_name"]).gsub("-#{item['number']}", "")
+  data = Gems.info name
+  gem = Gemm.import data
+  puts gem.inspect
+end

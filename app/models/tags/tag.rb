@@ -17,7 +17,7 @@ class Tag < ApplicationRecord
 
   def synonym?(sentence)
     self.synonyms.each do |synonym|
-      if sentence.downcase.split.include?(synonym)
+      if sentence.gsub(",", " ").gsub(".", " ").downcase.split.include?(synonym)
         return true
       end
     end
