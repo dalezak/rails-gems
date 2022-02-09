@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get "/health", to: "pages#health", as: :health
   
   root "pages#index"
+  
 end

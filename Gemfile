@@ -74,7 +74,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise", "~> 4.8"
+gem 'devise', '~> 4.8', '>= 4.8.1'
 
 gem "devise_invitable", "~> 2.0"
 
@@ -83,6 +83,8 @@ gem "cancancan", "~> 3.3"
 gem "omniauth", "~> 2.0"
 
 gem "omniauth-github", "~> 2.0"
+
+gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
 
 gem "devise-bootstrap5", "~> 0.1.3"
 
@@ -101,3 +103,5 @@ gem "fastimage", "~> 2.2"
 gem "aws-sdk-s3", "~> 1.112"
 
 gem "image_processing", "~> 1.12"
+
+gem 'annotate'

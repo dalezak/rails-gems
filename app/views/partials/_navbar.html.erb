@@ -20,9 +20,9 @@
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownSignin" data-bs-toggle="dropdown" aria-expanded="false">
               <%= tag.i "", class: "fas fa-sign-in-alt" %> Sign in
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSignin">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSignin" data-turbo="false">
               <li>
-                <%= link_to user_github_omniauth_authorize_path, method: :post, class: 'dropdown-item' do %>
+                <%= button_to user_github_omniauth_authorize_path, class: 'dropdown-item', data: { turbo: false } do %>
                   <%= tag.i "", class: "fab fa-github" %> Sign in with Github
                 <% end %>
               </li>
