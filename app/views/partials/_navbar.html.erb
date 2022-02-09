@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to current_site, root_path, title: current_site, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menu">
@@ -9,12 +9,12 @@
         <%= link_to "Gems", gems_path, class: "nav-link" %>
         <%= link_to "Devs", users_path, class: "nav-link" %>
         <%= link_to "Tags", tags_path, class: "nav-link" %>
-         <%= link_to "Profile", profile_path, class: "nav-link d-block d-md-none" %>
+         <%= link_to "Profile", profile_path, class: "nav-link d-block d-sm-none" %>
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <%= link_to profile_path, title: "Profile" do %>
-            <%= render_avatar(current_user, "small", "me-3 d-none d-sm-none d-md-block") %>
+            <%= render_avatar(current_user, "small", "me-3 d-none d-sm-block") %>
           <% end %>
           <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light" do %>
             <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
