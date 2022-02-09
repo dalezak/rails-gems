@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to current_site, root_path, title: current_site, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menu">
@@ -12,6 +12,7 @@
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+          <%= render_avatar(current_user, "small") %>
           <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light" do %>
             <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
           <% end %>

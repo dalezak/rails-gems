@@ -1,0 +1,5 @@
+<% 
+  size ||= "medium" 
+  url = user.image.present? && user.image.exists? ? user.image_url(size.to_sym) : "user-#{size}.png"
+%>
+<%= image_tag url, alt: user.name, class: "img-#{size} rounded-circle", onerror: "this.src='/assets/user-#{size}.png'" %>

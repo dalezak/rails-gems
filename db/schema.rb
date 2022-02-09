@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_161723) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_08_161723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -30,8 +29,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
     t.integer "tags_count", default: 0
     t.integer "likes_count", default: 0
     t.integer "downloads_count", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_gems_on_slug"
   end
 
@@ -41,8 +40,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
     t.string "uid"
     t.string "token"
     t.string "refresh_token"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["provider"], name: "index_identities_on_provider"
     t.index ["refresh_token"], name: "index_identities_on_refresh_token"
     t.index ["token"], name: "index_identities_on_token"
@@ -53,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
   create_table "likes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "gem_id", null: false
     t.uuid "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["gem_id"], name: "index_likes_on_gem_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -62,8 +61,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
   create_table "taggings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "gem_id", null: false
     t.uuid "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["gem_id", "tag_id"], name: "index_taggings_on_gem_id_and_tag_id", unique: true
     t.index ["gem_id"], name: "index_taggings_on_gem_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -74,8 +73,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
     t.string "name"
     t.jsonb "synonyms", default: [], array: true
     t.integer "taggings_count", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name"
     t.index ["slug"], name: "index_tags_on_slug"
   end
@@ -84,11 +83,11 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: 6
-    t.datetime "last_sign_in_at", precision: 6
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "type", default: "User"
@@ -99,12 +98,12 @@ ActiveRecord::Schema.define(version: 2022_02_08_161723) do
     t.jsonb "image_data"
     t.jsonb "details", default: {}
     t.integer "likes_count", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "invitation_token"
-    t.datetime "invitation_created_at", precision: 6
-    t.datetime "invitation_sent_at", precision: 6
-    t.datetime "invitation_accepted_at", precision: 6
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
     t.string "invited_by_type"
     t.bigint "invited_by_id"

@@ -1,17 +1,14 @@
 img {
-  &.img-50 {
-    width: 50px;
+  &.img-sm {
+    width: 33px;
+    height: 33px;
   }
 
-  &.img-72 {
+  &.img-md {
     width: 72px;
   }
 
-  &.img-100 {
+  &.img-lg {
     width: 100px;
-  }
-
-  &.img-150 {
-    width: 150px;
   }
 }

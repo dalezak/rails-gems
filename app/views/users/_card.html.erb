@@ -3,8 +3,7 @@
     <div class="card h-100">
       <div class="card-body">
         <div class="ms-2 float-end">
-          <%= image_tag user.image_url, alt: user.name, class: 'img-72 rounded-circle', onerror: "this.src='/assets/user/user-72.png'" if user.image.present? && user.image.exists? %>
-          <%= image_tag 'user/user-72.png', class: 'img-72 rounded-circle', alt: user.name if user.image.nil? %>
+          <%= render_avatar(user, "medium") %>
         </div>
         <h5 class="card-title"><%= link_to user.name, user, data: { turbo_frame: "_top" } %></h5>
         <p class="card-text"><%= (user.title || user.description).to_s.truncate(150) %></p>

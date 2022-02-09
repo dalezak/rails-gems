@@ -1,8 +1,7 @@
 <div class="card mb-4">
   <div class="card-body">
     <div class="ms-2 float-end">
-      <%= image_tag user.image_url, alt: user.name, class: 'img-100 rounded-circle', onerror: "this.src='/assets/user/user-100.png'" if user.image.present? && user.image.exists? %>
-      <%= image_tag 'user/user-100.png', class: 'img-100 rounded-circle', alt: user.name if user.image.nil? %>
+      <%= render_avatar(user, "large") %>
     </div>
     <%= tag.h1 user.name, class: "card-title" %>
     <%= tag.h5 user.title, class: "card-subtitle mb-2 text-muted" if user.title.present? %>
