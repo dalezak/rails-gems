@@ -83,8 +83,19 @@ module ApplicationHelper
   def render_cards(sm: 1, md: 2, lg: 3, xl: 4, gap: 4, &block)
     render(
       partial: '/partials/cards',
-      locals: { sm: sm, md: md, lg: lg, xl: xl, gap: gap, block: block }
-    )
+      locals: { sm: sm, md: md, lg: lg, xl: xl, gap: gap, block: block })
+  end
+
+  def render_badge(icon: "", color: "secondary", &block)
+    render(
+      partial: '/partials/badge',
+      locals: { color: color, icon: icon, block: block })
+  end
+
+  def render_like(gem)
+    render(
+      partial: '/partials/like',
+      locals: { gem: gem })
   end
 
 end

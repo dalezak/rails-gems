@@ -1,0 +1,9 @@
+<% if gem.liked? %>
+  <%= button_to unlike_gem_path(gem), method: :delete, title: "Liked", class: "float-end btn btn-block btn-sm btn-primary" do %>
+    <%= tag.i "", class: "fas fa-heart" %>
+  <% end %>
+<% else %>
+  <%= button_to like_gem_path(gem), method: :post, title: "Like", class: "float-end btn btn-block btn-sm btn-outline-primary" do %>
+    <%= tag.i "", class: "far fa-heart" %>
+  <% end %>
+<% end %>

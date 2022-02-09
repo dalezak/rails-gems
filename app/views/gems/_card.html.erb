@@ -7,24 +7,12 @@
         <div class="card-text"><%= gem.title.to_s.truncate(150) %></div>
       </div>
       <div class="card-footer">
-        <% if user_signed_in? %>
-          <% if gem.liked? %>
-            <%= button_to unlike_gem_path(gem), method: :delete, title: "Liked", class: "float-end btn btn-block btn-sm btn-primary" do %>
-              <%= tag.i "", class: "fas fa-heart" %>
-            <% end %>
-          <% else %>
-            <%= button_to like_gem_path(gem), method: :post, title: "Like", class: "float-end btn btn-block btn-sm btn-outline-primary" do %>
-              <%= tag.i "", class: "far fa-heart" %>
-            <% end %>
-          <% end %>
+        <%= render_like(gem) if user_signed_in? %>
+        <%= render_badge(icon: "fas fa-heart") do %>
+           <%= number_to_human(gem.likes_count) %>
         <% end %>
-        <%= tag.span class: "badge bg-secondary" do %>
-          <%= tag.i "", class: "fas fa-heart" %>
-          <%= number_to_human(gem.likes_count) %>
-        <% end %>
-        <%= tag.span class: "badge bg-secondary" do %>
-          <%= tag.i "", class: "fas fa-download" %>
-          <%= number_to_human(gem.downloads_count) %>
+        <%= render_badge(icon: "fas fa-download") do %>
+           <%= number_to_human(gem.downloads_count) %>
         <% end %>
       </div>
     </div>

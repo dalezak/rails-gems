@@ -11,6 +11,7 @@ class User < ApplicationRecord
   store_attribute :details, :homepage_uri, :string
   store_attribute :details, :github_uri, :string
   store_attribute :details, :twitter_uri, :string
+  store_attribute :details, :gem_names, :json, default: []
 
   has_many :identities, dependent: :destroy
 

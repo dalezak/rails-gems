@@ -3,9 +3,8 @@
     <h1 class="card-title"><%= tag.name %></h1>
   </div>
   <div class="card-footer text-muted">
-     <span class="badge bg-secondary">
-      <i class="fas fa-tag"></i>
+    <%= render_badge(icon: "fas fa-tag") do %>
       <%= number_to_human(tag.taggings_count) %>
-    </span>
+    <% end %>
   </div>
 </div>

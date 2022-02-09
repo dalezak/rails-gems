@@ -16,39 +16,24 @@
     <%= link_to("Mailing List", gem.mailing_list_uri, class: "card-link", target: "_top") if gem.mailing_list_uri.present? %>
   </div>
   <div class="card-footer text-muted">
-    <% if user_signed_in? %>
-      <% if gem.liked? %>
-        <%= button_to unlike_gem_path(gem), method: :delete, title: "Liked", class: "float-end btn btn-block btn-sm btn-primary" do %>
-          <%= tag.i "", class: "fas fa-heart" %>
-        <% end %>
-      <% else %>
-        <%= button_to like_gem_path(gem), method: :post, title: "Like", class: "float-end btn btn-block btn-sm btn-outline-primary" do %>
-          <%= tag.i "", class: "far fa-heart" %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <%= tag.span class: "badge bg-secondary" do %>
-      <%= tag.i "", class: "fas fa-heart" %>
+    <%= render_like(gem) if user_signed_in? %>
+    <%= render_badge(icon: "fas fa-heart") do %>
       <%= number_to_human(gem.likes_count) %>
     <% end %>
-    <%= tag.span class: "badge bg-secondary" do %>
-      <%= tag.i "", class: "fas fa-download" %>
+    <%= render_badge(icon: "fas fa-download") do %>
       <%= number_to_human(gem.downloads_count) %>
     <% end %>
     <% gem.authors.to_a.each do |author| %>
-      <%= tag.span class: "badge bg-secondary" do %>
-        <%= tag.i "", class: "fas fa-user-cog" %>
+      <%= render_badge(icon: "fas fa-user-cog") do %>
         <%= author %>
       <% end %>
     <% end %>
     <% gem.licenses.to_a.each do |license| %>
-      <%= tag.span class: "badge bg-secondary" do %>
-        <%= tag.i "", class: "fas fa-file-alt" %>
+      <%= render_badge(icon: "fas fa-file-alt") do %>
         <%= license %>
       <% end %>
     <% end %>
-    <%= tag.span class: "badge bg-secondary" do %>
-      <%= tag.i "", class: "fas fa-cog" %>
+    <%= render_badge(icon: "fas fa-cog") do %>
       <%= gem.version %>
     <% end if gem.version.present? %>
   </div>
