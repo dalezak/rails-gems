@@ -1,5 +1,6 @@
 <% title ["Gems", @gem] %>
 <% description @gem.title || @gem.description %>
+<% keywords @gem.tag_list %>
 
 <%= turbo_frame_tag dom_id(@gem, :details) do %>
   <%= render "/gems/details", gem: @gem %>

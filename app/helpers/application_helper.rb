@@ -31,6 +31,10 @@ module ApplicationHelper
     content_for :description, description
   end
 
+  def keywords(keywords="")
+    content_for :keywords, keywords
+  end
+
   def sanitize(content)
     ActionController::Base.helpers.sanitize(content)
   end
