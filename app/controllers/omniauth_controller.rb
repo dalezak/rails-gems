@@ -7,8 +7,10 @@ class OmniauthController < Devise::OmniauthCallbacksController
       @user.slug = auth.info.nickname
       @user.name = auth.info.name
       @user.image_remote_url = auth.info.image
-      @user.homepage_uri = auth.info.urls["Blog"] if auth.info.urls["Blog"].present?
-      @user.github_uri = auth.info.urls["GitHub"] if auth.info.urls["GitHub"].present?
+      @user.title = auth.extra.raw_info.bio
+      @user.location = auth.extra.raw_info.location
+      @user.homepage_uri = auth.extra.raw_info.blog if auth.extra.raw_info.blog.present?
+      @user.github_uri = "https://github.com/#{auth.info.nickname}"
       @user.save if @user.changed?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: "Github"
       sign_in(resource_name, @user)

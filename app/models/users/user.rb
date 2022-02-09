@@ -55,6 +55,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :validatable
 
+  store_attribute :details, :location, :string
   store_attribute :details, :homepage_uri, :string
   store_attribute :details, :github_uri, :string
   store_attribute :details, :twitter_uri, :string

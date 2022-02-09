@@ -45,7 +45,7 @@
   "messaging": ['xmpp'],
   "models": [],
   "networking": [],
-  "optimization": [],
+  "optimization": ["n+1"],
   "orm": ["object relational mapping"],
   "pagination": ["paging", "infinite scroll", "paginator"],
   "payments": ["stripe", "credit cards", "money"],

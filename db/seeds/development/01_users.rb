@@ -5,6 +5,7 @@
     slug: name.parameterize,
     name: name,
     title: Faker::Hipster.sentence,
+    location: Faker::Address.city,
     description: Faker::Hipster.paragraph,
     image_remote_url: "https://randomuser.me/api/portraits/#{['men','women'].sample}/#{index}.jpg",
     homepage_uri: Faker::Internet.url,

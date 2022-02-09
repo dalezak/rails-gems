@@ -14,6 +14,9 @@
     <%= render_badge(icon: "fas fa-heart") do %>
       <%= pluralize(user.likes_count, "likes") %>
     <% end %>
-    <%= render_match(user) if user_signed_in? %>
+    <%= render_badge(icon: "fas fa-map-marked-alt") do %>
+      <%= user.location %>
+    <% end if user.location.present? %>
+    <%= render_match(user) if user_signed_in? && user != current_user %>
   </div>
 </div>
