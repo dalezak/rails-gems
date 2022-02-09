@@ -17,10 +17,10 @@ class Gemm < ApplicationRecord
 
   attribute :liked, :boolean
 
-  has_many :likes, dependent: :destroy, foreign_key: "gem_id"
+  has_many :likes, inverse_of: :gem, dependent: :destroy, foreign_key: "gem_id"
   has_many :users, through: :likes, dependent: :destroy
 
-  has_many :taggings, dependent: :destroy, foreign_key: "gem_id"
+  has_many :taggings, inverse_of: :gem, dependent: :destroy, foreign_key: "gem_id"
   has_many :tags, through: :taggings
 
   scope :for_slug, ->(slug) { where(slug: slug) }
