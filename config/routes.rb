@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end  
   
   get "/", to: "pages#index", as: :home
+  get "/profile", to: "users#profile", as: :profile
   get "/health", to: "pages#health", as: :health
   
   root "pages#index"

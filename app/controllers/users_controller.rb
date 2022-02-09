@@ -69,6 +69,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    authorize! :show, current_user
+  end
+
   private
 
   def set_user

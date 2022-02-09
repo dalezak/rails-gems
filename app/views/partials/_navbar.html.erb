@@ -9,10 +9,13 @@
         <%= link_to "Gems", gems_path, class: "nav-link" %>
         <%= link_to "Devs", users_path, class: "nav-link" %>
         <%= link_to "Tags", tags_path, class: "nav-link" %>
+         <%= link_to "Profile", profile_path, class: "nav-link d-block d-md-none" %>
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%= render_avatar(current_user, "small") %>
+          <%= link_to profile_path, title: "Profile" do %>
+            <%= render_avatar(current_user, "small", "me-3 d-none d-sm-none d-md-block") %>
+          <% end %>
           <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light" do %>
             <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
           <% end %>

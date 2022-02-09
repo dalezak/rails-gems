@@ -96,8 +96,8 @@ module ApplicationHelper
     render(partial: '/partials/match', locals: { user: user })
   end
 
-  def render_avatar(user, size = "medium")
-    render(partial: '/partials/avatar', locals: { user: user, size: size })
+  def render_avatar(user, size = "medium", classes = "")
+    render(partial: '/partials/avatar', locals: { user: user, size: size, classes: classes })
   end
 
 end
