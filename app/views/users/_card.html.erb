@@ -12,7 +12,7 @@
         <%= render_badge(icon: "fas fa-heart") do %>
           <%= number_to_human(user.likes_count) %>
         <% end %>
-        <%= render_match(user) if user_signed_in? %>
+        <%= render_match(user) if user_signed_in? && user != current_user %>
       </div>
     </div>
   <% end %>
