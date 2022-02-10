@@ -1,0 +1,9 @@
+:timeout: 8
+:verbose: true
+:concurrency: 5
+:queues:
+  - workers
+  - mailers
+
+production:
+  :concurrency: 5
