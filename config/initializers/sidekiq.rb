@@ -1,4 +1,4 @@
-if ENV['REDIS_URL'].present? 
+if ENV['REDIS_URL'].present?
   Sidekiq.configure_client do |config|
     config.redis = { url: ENV['REDIS_URL'], size: 1, ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
   end
@@ -16,5 +16,4 @@ if ENV['REDIS_URL'].present?
       end
     end
   end
-  Sidekiq::Extensions.enable_delay!
-end  
+end

@@ -44,6 +44,7 @@
   "measurements": [],
   "messaging": ['xmpp'],
   "models": [],
+  "multitenant": ["multitenancy", "multi-tenancy", "multiple tenants"],
   "networking": [],
   "optimization": ["n+1"],
   "orm": ["object relational mapping"],
