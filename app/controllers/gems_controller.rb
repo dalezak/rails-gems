@@ -13,7 +13,7 @@ class GemsController < ApplicationController
       for_tag(@tag).
       for_user(@user).
       for_search(@search)
-    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc).all
+    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc).all
     @gems_count = query.count(:all) if request.format.html?
     if user_signed_in?
       @likes = Like.for_user(current_user).for_gems(@gems).all

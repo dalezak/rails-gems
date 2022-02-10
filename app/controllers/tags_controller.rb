@@ -7,7 +7,7 @@ class TagsController < ApplicationController
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 24).to_i, 48].min
     query = Tag.for_search(@search)
-    @tags = query.limit(@limit).offset(@offset).order(taggings_count: :desc)
+    @tags = query.limit(@limit).offset(@offset).order(taggings_count: :desc, name: :asc)
     @tags_count = query.count(:all) if request.format.html?
     respond_to do |format|
       format.html { }
