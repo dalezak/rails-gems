@@ -2,7 +2,7 @@
 
 <%= turbo_frame_tag "tags" do %>
   <%= render_cards do |t| %>
-    <%= render partial: '/tags/card', collection: @tags, as: :tag %>
+    <%= render partial: '/tags/card', collection: @tags, as: :tag, cached: true %>
     <div id="tag_cards"></div>
   <% end %>
   <%= render "/partials/load_more", count: @tags_count, offset: @offset + @limit %>

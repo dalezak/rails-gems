@@ -1,5 +1,5 @@
 <%= turbo_stream.replace "tag_cards" do %>
-  <%= render partial: '/tags/card', collection: @tags, as: :tag %>
+  <%= render partial: '/tags/card', collection: @tags, as: :tag, cached: true %>
   <div id="tag_cards"></div>
 <% end %>
 <%= turbo_stream.replace "load_more" do %>
