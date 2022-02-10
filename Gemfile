@@ -76,7 +76,7 @@ end
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
-gem "devise_invitable", "~> 2.0"
+gem 'devise-i18n'
 
 gem "cancancan", "~> 3.3"
 

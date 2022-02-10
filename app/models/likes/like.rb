@@ -29,7 +29,7 @@ class Like < ApplicationRecord
   scope :for_gems, ->(gems) { where(gem_id: gems.pluck(:id)) if gems.present? }
 
   def update_user
-    self.user.update(gem_names: self.user.gems.map{|gem| gem.name})
+    self.user.update(gem_list: self.user.gems.map{|gem| gem.name})
   end
 
 end

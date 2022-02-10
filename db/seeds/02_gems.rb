@@ -27,6 +27,7 @@
   "cssbundling-rails", 
   "database_cleaner",
   "devise",
+  "devise-i18n",
   "devise_invitable",
   "discard",
   "dotenv",

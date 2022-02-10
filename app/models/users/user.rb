@@ -23,22 +23,11 @@
 #  likes_count            :integer          default("0")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  invitation_token       :string
-#  invitation_created_at  :datetime
-#  invitation_sent_at     :datetime
-#  invitation_accepted_at :datetime
-#  invitation_limit       :integer
-#  invited_by_type        :string
-#  invited_by_id          :integer
-#  invitations_count      :integer          default("0")
 #  identities_count       :integer          default("0")
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
-#  index_users_on_invitation_token      (invitation_token) UNIQUE
-#  index_users_on_invited_by            (invited_by_type,invited_by_id)
-#  index_users_on_invited_by_id         (invited_by_id)
 #  index_users_on_name                  (name)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_slug                  (slug)
@@ -52,14 +41,13 @@ class User < ApplicationRecord
   include ::Imageable
   include ImageUploader::Attachment(:image)
 
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :invitable, :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :validatable
 
   store_attribute :details, :location, :string
   store_attribute :details, :homepage_uri, :string
   store_attribute :details, :github_uri, :string
   store_attribute :details, :twitter_uri, :string
-  store_attribute :details, :gem_names, :json, default: []
+  store_attribute :details, :gem_list, :json, default: []
 
   has_many :identities, dependent: :destroy
 

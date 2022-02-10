@@ -30,6 +30,12 @@
                   <%= tag.i "", class: "fab fa-github" %> Sign in with Github
                 <% end %>
               </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to new_user_session_path, class: 'dropdown-item', data: { turbo: false } do %>
+                  <%= tag.i "", class: "fas fa-key" %> Sign in with Password
+                <% end %>
+              </li>
             </ul>
           </div>
         <% end %>
