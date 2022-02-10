@@ -38,6 +38,7 @@ class User < ApplicationRecord
 
   include ::Typeable
   include ::Slugable
+  include ::Iconable
   include ::Imageable
   include ImageUploader::Attachment(:image)
 
@@ -56,6 +57,18 @@ class User < ApplicationRecord
 
   scope :for_gem, ->(gem) { joins(:likes).where(likes: { gem_id: gem.id }) if gem.present? }
   scope :for_search, ->(query) { where(email: query).or(where("name ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query))).or(where(username: query.downcase)) if query.present? }
+
+  def self.icon
+    "fa-user"
+  end
+
+  def admin?
+    self.is_a?(Admin)
+  end
+
+  def guest?
+    self.is_a?(Guest)
+  end
 
   def self.from_omniauth(auth)
     if auth.present? && auth.provider.present? && auth.uid.present?

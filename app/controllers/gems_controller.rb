@@ -1,11 +1,10 @@
 class GemsController < ApplicationController
-  # before_action :authenticate_user!
   before_action :set_user, only: [:index]
   before_action :set_tag, only: [:index]
   before_action :set_gem, only: [:edit, :update, :destroy]
 
   def index
-    authorize! :index, Gem
+    authorize! :index, Gemm
     @search = params.fetch(:search, nil)
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 24).to_i, 48].min
@@ -38,7 +37,7 @@ class GemsController < ApplicationController
   end
 
   def new
-    authorize! :new, Gem
+    authorize! :new, Gemm
     @gem = Gemm.new
   end
 
@@ -47,7 +46,7 @@ class GemsController < ApplicationController
   end
 
   def create
-    authorize! :create, Gem
+    authorize! :create, Gemm
     @gem = Gemm.new(gem_params)
     respond_to do |format|
       if @gem.save
