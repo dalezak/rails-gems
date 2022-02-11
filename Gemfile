@@ -70,3 +70,7 @@ end
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
 end
+
+group :production do
+  gem 'scout_apm'
+end
