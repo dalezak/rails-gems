@@ -3,7 +3,7 @@
   icon ||= ""
   classes ||= ""
 %>
-<%= tag.span class: "badge bg-#{color} #{classes}" do %>
+<%= tag.span class: "badge bg-#{color} #{classes} mb-2 mb-sm-0" do %>
   <%= tag.i "", class: icon if icon.present? %>
   <%= capture(&block) %>
 <% end %>
