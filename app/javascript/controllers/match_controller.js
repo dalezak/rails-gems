@@ -1,5 +1,10 @@
-import BaseController from "./base_controller"
-export default class extends BaseController {
+import {
+  Controller
+} from "@hotwired/stimulus"
+import {
+  current
+} from "../helpers/current_helpers"
+export default class extends Controller {
 
   static targets = ["matches"]
   static values = {
@@ -14,9 +19,9 @@ export default class extends BaseController {
   }
 
   connect() {
-    let user = this.current("user-slug");
+    let user = current.user.slug
     if (user && user.length > 0 && user != this.userValue) {
-      let gems = this.current("user-gems", true);
+      let gems = JSON.parse(current.user.gems);
       let matches = this.gemsValue.filter(gem => gems.includes(gem));
       this.matchesTarget.innerHTML = matches.length;
       this.element.classList.remove("invisible");

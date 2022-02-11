@@ -1,5 +1,7 @@
-import BaseController from "./base_controller"
-export default class extends BaseController {
+import {
+  Controller
+} from "@hotwired/stimulus"
+export default class extends Controller {
 
   static targets = ["phrase"]
   static values = {

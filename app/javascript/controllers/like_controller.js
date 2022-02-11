@@ -1,5 +1,10 @@
-import BaseController from "./base_controller"
-export default class extends BaseController {
+import {
+  Controller
+} from "@hotwired/stimulus"
+import {
+  current
+} from "../helpers/current_helpers"
+export default class extends Controller {
 
   static targets = ["icon"]
   static values = {
@@ -10,9 +15,9 @@ export default class extends BaseController {
   }
 
   connect() {
-    let user = this.current("user-slug");
+    let user = current.user.slug;
     if (user && user.length > 0) {
-      let gems = this.current("user-gems", true);
+      let gems = JSON.parse(current.user.gems);
       this.iconTarget.classList.remove("fas", "far");
       this.element.classList.remove("btn-primary", "btn-outline-primary");
       if (gems.includes(this.gemValue)) {
