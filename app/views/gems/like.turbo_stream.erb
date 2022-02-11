@@ -1,9 +1,9 @@
+<%= turbo_stream.replace "current-user-gems" do %>
+  <%= render '/partials/metatags/user_gems', user: current_user.reload %>
+<% end %>
 <%= turbo_stream.replace dom_id(@gem, :card) do %>
   <%= render '/gems/card', gem: @gem %>
 <% end %>
 <%= turbo_stream.replace dom_id(@gem, :details) do %>
   <%= render '/gems/details', gem: @gem %>
-<% end %>
-<%= turbo_stream.replace "profile" do %>
-  <%= render_profile(current_user.reload) %>
 <% end %>

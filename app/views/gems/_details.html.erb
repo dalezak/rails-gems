@@ -16,7 +16,7 @@
     <%= link_to("Mailing List", gem.mailing_list_uri, class: "card-link", target: "_top") if gem.mailing_list_uri.present? %>
   </div>
   <div class="card-footer text-muted">
-    <%= render_like(gem) if user_signed_in? %>
+    <%= render_like(gem) %>
     <%= render_badge(icon: "fas fa-heart") do %>
       <%= number_to_human(gem.likes_count) %>
     <% end %>

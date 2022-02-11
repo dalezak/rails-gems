@@ -1,7 +1,7 @@
 class GemsController < ApplicationController
   before_action :set_user, only: [:index]
   before_action :set_tag, only: [:index]
-  before_action :set_gem, only: [:edit, :update, :destroy]
+  before_action :set_gem, only: [:edit, :update, :destroy, :like]
 
   def index
     authorize! :index, Gemm
@@ -13,14 +13,8 @@ class GemsController < ApplicationController
       for_tag(@tag).
       for_user(@user).
       for_search(@search)
-    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc).all
+    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc)
     @gems_count = query.count(:all) if request.format.html?
-    if user_signed_in?
-      @likes = Like.for_user(current_user).for_gems(@gems).all
-      @gems.each do |gem|
-        gem.liked = @likes.any? {|like| like.gem_id == gem.id }
-      end
-    end
     respond_to do |format|
       format.html { }
       format.json { }
@@ -31,9 +25,6 @@ class GemsController < ApplicationController
   def show
     @gem = Gemm.with_tags(true).for_slug(params[:id]).first!
     authorize! :show, @gem
-    if user_signed_in?
-      @gem.liked = Like.for_user(current_user).for_gem(@gem).exists?
-    end
   end
 
   def new
@@ -78,6 +69,20 @@ class GemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to gems_url, notice: 'Gem was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  def like
+    authorize! :like, @gem
+    @like = Like.for_user(current_user).for_gem(@gem).first
+    if @like.present?
+      @like.destroy
+    else
+      @like = Like.create(gem: @gem, user: current_user)
+    end
+    respond_to do |format|
+      format.html { redirect_to gem_path(@gem) }
+      format.turbo_stream { }
     end
   end
 

@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   
   resources :gems do
     member do
-      post "like", as: :like, to: "likes#create"
-      delete "unlike", as: :unlike, to: "likes#destroy"
+      post "like", as: :like, to: "gems#like"
     end 
     resources :users, only: [:index]
     resources :likes, only: [:create, :destroy]

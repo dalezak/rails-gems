@@ -3,6 +3,7 @@ class UserAbility
 
   def initialize(user)
     can :read, Gemm
+    can :like, Gemm
 
     can :read, User
 

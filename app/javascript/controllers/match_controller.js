@@ -1,7 +1,5 @@
-import {
-  Controller
-} from "@hotwired/stimulus"
-export default class extends Controller {
+import BaseController from "./base_controller"
+export default class extends BaseController {
 
   static targets = ["matches"]
   static values = {
@@ -16,15 +14,14 @@ export default class extends Controller {
   }
 
   connect() {
-    let profile = document.getElementById('profile');
-    if (profile) {
-      let user = profile.getAttribute('data-user')
-      if (user != this.userValue) {
-        let gems = profile.getAttribute('data-gems');
-        let matches = this.gemsValue.filter(gem => gems.includes(gem));
-        this.matchesTarget.innerHTML = matches.length;
-        this.element.classList.remove("invisible");
-      }
+    let user = this.current("user-slug");
+    if (user && user.length > 0 && user != this.userValue) {
+      let gems = this.current("user-gems", true);
+      let matches = this.gemsValue.filter(gem => gems.includes(gem));
+      this.matchesTarget.innerHTML = matches.length;
+      this.element.classList.remove("invisible");
+    } else {
+      this.element.classList.add("invisible");
     }
   }
 

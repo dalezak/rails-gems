@@ -1,11 +1,9 @@
 import {
-  Controller
-} from "@hotwired/stimulus"
-import {
   get,
   post
 } from '@rails/request.js'
-export default class extends Controller {
+import BaseController from "./base_controller"
+export default class extends BaseController {
 
   getTurboSteam(event) {
     event.preventDefault()

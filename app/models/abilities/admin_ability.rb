@@ -3,6 +3,7 @@ class AdminAbility
 
   def initialize(user)
     can :manage, Gemm
+    can :like, Gemm
 
     can :manage, User
 

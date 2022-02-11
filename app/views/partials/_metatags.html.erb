@@ -32,6 +32,8 @@
 <% if content_for?(:image) -%>
 <meta name="twitter:image" content="<%= content_for(:image) %>"/>
 <% end %>
+<%= render "/partials/metatags/user_slug", user: current_user %>
+<%= render "/partials/metatags/user_gems", user: current_user %>
 <%= auto_discovery_link_tag(:rss, content_for(:rss), {title: "RSS Feed"}) if content_for?(:rss) %>
 <%= auto_discovery_link_tag(:atom, content_for(:atom), {title: "Atom Feed"}) if content_for?(:atom) %>
 <%= favicon_link_tag asset_path('favicon.ico') %>

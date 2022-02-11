@@ -55,7 +55,6 @@ class Gemm < ApplicationRecord
   scope :for_search, ->(query) { where("name ILIKE CONCAT('%', ?, '%') OR title ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query), sanitize_sql_like(query)) if query.present? }
 
   scope :with_tags, ->(include) { includes(:tags) if include.present? && include.to_bool }
-  scope :with_taggings, ->(include) { includes(:taggings) if include.present? && include.to_bool }
 
   def type_name
     "Gem"

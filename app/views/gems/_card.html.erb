@@ -1,20 +1,22 @@
 <%= turbo_frame_tag dom_id(gem, :card) do %>
-  <div class="col h-100">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to gem.name, gem_path(gem), data: { turbo_frame: "_top" } %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= gem.tag_list %></h6>
-        <div class="card-text"><%= gem.title.to_s.truncate(150) %></div>
-      </div>
-      <div class="card-footer">
-        <%= render_like(gem) if user_signed_in? %>
-        <%= render_badge(icon: "fas fa-heart") do %>
-           <%= number_to_human(gem.likes_count) %>
-        <% end %>
-        <%= render_badge(icon: "fas fa-download") do %>
-           <%= number_to_human(gem.downloads_count) %>
-        <% end %>
+  <% cache(gem) do %>
+    <div class="col h-100">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to gem.name, gem_path(gem), data: { turbo_frame: "_top" } %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= gem.tag_list %></h6>
+          <div class="card-text"><%= gem.title.to_s.truncate(150) %></div>
+        </div>
+        <div class="card-footer">
+          <%= render_like(gem) %>
+          <%= render_badge(icon: "fas fa-heart") do %>
+            <%= number_to_human(gem.likes_count) %>
+          <% end %>
+          <%= render_badge(icon: "fas fa-download") do %>
+            <%= number_to_human(gem.downloads_count) %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
