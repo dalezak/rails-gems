@@ -14,7 +14,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @limit = [params.fetch(:limit, 24).to_i, 48].min
     query = <%= class_name %>.for_search(@search)
     @<%= plural_table_name %> = query.limit(@limit).offset(@offset).order(created_at: :asc)
-    @<%= plural_table_name %>_count = query.count(:all) if request.format.html?
+    @<%= plural_table_name %>_count = query.count(:all) unless request.format.json?
     respond_to do |format|
       format.html { }
       format.json { }

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       for_gem(@gem).
       for_search(@search)
     @users = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc)
-    @users_count = query.count(:all) if request.format.html?
+    @users_count = query.count(:all) unless request.format.json?
     respond_to do |format|
       format.html { }
       format.json { }

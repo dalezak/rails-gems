@@ -14,7 +14,14 @@ class GemsController < ApplicationController
       for_user(@user).
       for_search(@search)
     @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc)
-    @gems_count = query.count(:all) if request.format.html?
+    @gems_count = query.count(:all) unless request.format.json?
+    if @search.present? && @gems.count.zero?
+      Gems.search(@search).to_a.each do |result|
+        Gemm.import(result)
+      end
+      @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc)
+      @gems_count = query.count(:all) unless request.format.json?
+    end
     respond_to do |format|
       format.html { }
       format.json { }

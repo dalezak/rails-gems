@@ -106,7 +106,7 @@ class Gemm < ApplicationRecord
   def add_tags
     Tag.all_cached.each do |tag|
       if tag.synonym?(self.title) && self.tags.exists?(tag.id) == false
-        self.taggings.create(tag: tag)
+        self.taggings.create(tag_id: tag.id)
       end
     end
   end

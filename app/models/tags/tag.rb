@@ -28,7 +28,7 @@ class Tag < ApplicationRecord
   validates :name, uniqueness: true
 
   def self.all_cached
-    Rails.cache.fetch(["tags:all", Tag.maximum(:updated_at)]) do
+    Rails.cache.fetch(["tags:all", Tag.maximum(:updated_at).utc.iso8601]) do
       Tag.order(name: :asc).all.to_a
     end
   end
