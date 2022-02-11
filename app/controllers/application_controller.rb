@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   rescue_from Exception, with: :unknown_error if Rails.env.production?
   rescue_from StandardError, with: :unknown_error
   rescue_from ActionController::RoutingError, with: :route_not_found
@@ -87,6 +89,11 @@ class ApplicationController < ActionController::Base
       format.json { render json: { error: "Unknown Error", status: 500 }, status: :internal_server_error }
       format.all { render nothing: true, status: :internal_server_error }
     end
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
 end

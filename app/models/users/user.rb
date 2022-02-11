@@ -58,6 +58,9 @@ class User < ApplicationRecord
   scope :for_gem, ->(gem) { joins(:likes).where(likes: { gem_id: gem.id }) if gem.present? }
   scope :for_search, ->(query) { where(email: query).or(where("name ILIKE CONCAT('%', ?, '%')", sanitize_sql_like(query))).or(where(username: query.downcase)) if query.present? }
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   def self.icon
     "fa-user"
   end

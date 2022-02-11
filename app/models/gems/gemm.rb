@@ -56,6 +56,9 @@ class Gemm < ApplicationRecord
 
   scope :with_tags, ->(include) { includes(:tags) if include.present? && include.to_bool }
 
+  validates :name, presence: true
+  validates :slug, presence: true
+
   def type_name
     "Gem"
   end
