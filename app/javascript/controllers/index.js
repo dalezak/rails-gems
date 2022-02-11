@@ -8,5 +8,7 @@ import {
 
 import TurboController from "./turbo_controller"
 import MarqueeController from "./marquee_controller"
+import MatchController from "./match_controller"
 application.register("turbo", TurboController)
 application.register("marquee", MarqueeController)
+application.register("match", MatchController)

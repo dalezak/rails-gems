@@ -1,19 +1,21 @@
 <div class="col">
   <%= turbo_frame_tag user do %>
-    <div class="card h-100">
-      <div class="card-body">
-        <div class="ms-2 float-end">
-          <%= render_avatar(user, "medium") %>
+    <% cache(user) do %>
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="ms-2 float-end">
+            <%= render_avatar(user, "medium") %>
+          </div>
+          <h5 class="card-title"><%= link_to user.name, user, data: { turbo_frame: "_top" } %></h5>
+          <p class="card-text"><%= (user.title || user.description).to_s.truncate(150) %></p>
         </div>
-        <h5 class="card-title"><%= link_to user.name, user, data: { turbo_frame: "_top" } %></h5>
-        <p class="card-text"><%= (user.title || user.description).to_s.truncate(150) %></p>
+        <div class="card-footer">
+          <%= render_badge(icon: "fas fa-heart") do %>
+            <%= number_to_human(user.likes_count) %>
+          <% end %>
+          <%= render_match(user) %>
+        </div>
       </div>
-      <div class="card-footer">
-        <%= render_badge(icon: "fas fa-heart") do %>
-          <%= number_to_human(user.likes_count) %>
-        <% end %>
-        <%= render_match(user) if user_signed_in? && user != current_user %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

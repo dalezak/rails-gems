@@ -1,8 +1,9 @@
 <%
   color ||= "secondary"
   icon ||= ""
+  classes ||= ""
 %>
-<%= tag.span class: "badge bg-#{color}" do %>
+<%= tag.span class: "badge bg-#{color} #{classes}" do %>
   <%= tag.i "", class: icon if icon.present? %>
   <%= capture(&block) %>
 <% end %>

@@ -88,8 +88,8 @@ module ApplicationHelper
     render(partial: '/partials/cards', locals: { sm: sm, md: md, lg: lg, xl: xl, gap: gap, block: block })
   end
 
-  def render_badge(icon: "", color: "secondary", &block)
-    render(partial: '/partials/badge', locals: { color: color, icon: icon, block: block })
+  def render_badge(icon: "", color: "secondary", classes: "", &block)
+    render(partial: '/partials/badge', locals: { color: color, icon: icon, classes: classes, block: block })
   end
 
   def render_like(gem)
@@ -98,6 +98,10 @@ module ApplicationHelper
 
   def render_match(user)
     render(partial: '/partials/match', locals: { user: user })
+  end
+
+  def render_profile(user)
+    render(partial: '/partials/profile', locals: { user: user })
   end
 
   def render_avatar(user, size = "medium", classes = "")

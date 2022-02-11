@@ -1,4 +1,4 @@
-<% intersection = user.gem_list & current_user.gem_list %>
-<%= render_badge(icon: "fas fa-grin-hearts") do %>
-  <%= intersection.size %>
+<%= tag.span class: "badge bg-secondary invisible", data: { controller: "match", match_user_value: user.slug, match_gems_value: user.gem_list.to_a } do %>
+  <%= tag.i "", class: "fas fa-grin-hearts" %>
+  <%= tag.span "", data: { match_target: "matches" } %>
 <% end %>
