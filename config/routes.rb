@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "/", to: "pages#index", as: :home
   get "/profile", to: "users#profile", as: :profile
   get "/health", to: "pages#health", as: :health
+  get "/about", to: "pages#about", as: :about
   
   match "bad-request", to: "errors#bad_request", as: "bad_request", via: :all
   match "not_authorized", to: "errors#not_authorized", as: "not_authorized", via: :all

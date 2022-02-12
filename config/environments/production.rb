@@ -74,20 +74,20 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
-    host: ENV['BACKEND_URL'].gsub(/^https?:\/\//, '')
+    host: ENV['APP_URL'].gsub(/^https?:\/\//, '')
   }
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587,
-    domain: ENV['BACKEND_URL'].gsub(/^https?:\/\//, ''),
+    domain: ENV['APP_URL'].gsub(/^https?:\/\//, ''),
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
   config.action_mailer.deliver_later_queue_name = 'mailers'
-  config.action_mailer.default_url_options = { host: ENV['BACKEND_URL'] }
-  config.default_url_options = { host: ENV['BACKEND_URL'] }
+  config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
+  config.default_url_options = { host: ENV['APP_URL'] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -108,9 +108,9 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # Do not dump schema after migrations.

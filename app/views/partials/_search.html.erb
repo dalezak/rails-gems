@@ -1,7 +1,7 @@
 <% placeholder ||= "Search..." %>
 <nav aria-label="search">
   <%= form_tag current_url, method: :get, enforce_utf8: false, class: "input-group mb-4" do %>
-    <%= text_field_tag :search, params[:search], placeholder: placeholder, type: 'text', class: "form-control form-control-lg" %>
+    <%= text_field_tag :search, params[:search], placeholder: placeholder, type: 'text', class: "form-control" %>
     <%= button_tag type: "submit", class: "btn btn-sm btn-outline-search px-3" do %>
       <%= tag.i "", class: "fas fa-search" %>
     <% end %>
