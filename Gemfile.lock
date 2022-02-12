@@ -106,6 +106,9 @@ GEM
       activemodel (>= 5.2)
     brakeman (5.2.1)
     builder (3.2.4)
+    bullet (7.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     cancancan (3.3.0)
     capybara (3.36.0)
       addressable
@@ -390,6 +393,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
+    uniform_notifier (1.14.2)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -421,6 +425,7 @@ DEPENDENCIES
   bootsnap
   bootstrap_form (~> 5.0)
   brakeman
+  bullet
   cancancan (~> 3.3)
   capybara
   cssbundling-rails

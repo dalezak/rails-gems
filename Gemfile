@@ -56,6 +56,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman'
+  gem "bullet"
   gem 'rubocop'
   gem 'rubocop-rails', require: false
   gem 'active_record_doctor'
