@@ -5,11 +5,6 @@ module ApplicationHelper
 
   def current_site
     Rails.application.class.module_parent.name
-      .underscore
-      .humanize
-      .split
-      .map(&:capitalize)
-      .join(' ')
   end
 
   def current_title
