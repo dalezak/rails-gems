@@ -81,12 +81,11 @@ class User < ApplicationRecord
         identity.refresh_token = auth.credentials.refresh_token
       end
       if identity.user.nil?
-        password = Devise.friendly_token
-        identity.user = User.create!(
-          name: auth.info.name,
-          email: auth.info.email,
-          password: password,
-          password_confirmation: password)
+        user = User.first_or_initialize(email: auth.info.email)
+        user.name = auth.info.name
+        user.password = Devise.friendly_token if user.new_record?
+        user.save
+        identity.user = user
       end
       identity.save!
       identity.user
