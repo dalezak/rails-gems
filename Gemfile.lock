@@ -370,6 +370,17 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sentry-rails (5.1.0)
+      railties (>= 5.0)
+      sentry-ruby-core (~> 5.1.0)
+    sentry-ruby (5.1.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      sentry-ruby-core (= 5.1.0)
+    sentry-ruby-core (5.1.0)
+      concurrent-ruby
+    sentry-sidekiq (5.1.0)
+      sentry-ruby-core (~> 5.1.0)
+      sidekiq (>= 3.0)
     shrine (3.4.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
@@ -461,6 +472,9 @@ DEPENDENCIES
   rubocop-rails
   scout_apm
   selenium-webdriver
+  sentry-rails
+  sentry-ruby
+  sentry-sidekiq
   shrine (~> 3.4)
   sidekiq
   sprockets-rails
