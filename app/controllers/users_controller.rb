@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def create
     authorize! :create, User
-    @user = User.new(user_params)
+    @user = User.new(user_params.except(:type))
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update
     authorize! :update, @user
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params.except(:type))
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :title, :description)
+    params.require(:user).permit(:name, :title, :description, :image)
   end
 
 end

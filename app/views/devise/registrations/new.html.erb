@@ -19,6 +19,12 @@
 						<%= f.label :email, class: "form-label" %>
 						<%= f.email_field :email, autocomplete: "email", class: 'form-control', required: true %>
 					</div>
+					<div class="mb-3">
+						<%= f.label :image, class: "form-label" %>
+						<div class="input-group">
+							<%= f.file_field :image, placeholder: "Select image", class: "form-control", accept: 'image/jpg,image/jpeg,image/png' %>
+						</div>
+					</div>
 					<div class="row mb-4">
 						<div class="col">
 							<%= f.label :password, class: "form-label" %>
