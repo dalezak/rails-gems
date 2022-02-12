@@ -84,7 +84,7 @@ class User < ApplicationRecord
         user = User.first_or_initialize(email: auth.info.email)
         user.name = auth.info.name
         user.password = Devise.friendly_token if user.new_record?
-        user.save
+        user.save!
         identity.user = user
       end
       identity.save!
