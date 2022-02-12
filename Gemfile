@@ -59,6 +59,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'brakeman'
   gem "bullet"
+  gem 'derailed'
   gem 'rubocop'
   gem 'rubocop-rails', require: false
   gem 'active_record_doctor'
