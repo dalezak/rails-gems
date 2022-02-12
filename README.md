@@ -7,4 +7,4 @@ That's why I built [RailsGems](https://www.railsgems.com), an easy way to discov
 
 It was built using my [Rails Blueprint](https://github.com/dalezak/rails-blueprint) to help fast track the development.
 
-If you have any fedback or ideas, I'd [love to hear them](https://twitter.com/dalezak)!
+If you have any feedback or ideas, I'd [love to hear from you](https://twitter.com/dalezak)!
