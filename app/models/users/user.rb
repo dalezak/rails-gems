@@ -81,7 +81,7 @@ class User < ApplicationRecord
         identity.refresh_token = auth.credentials.refresh_token
       end
       if identity.user.nil? && auth.info.email.present?
-        user = User.first_or_initialize(email: auth.info.email)
+        user = User.where(email: auth.info.email).first_or_initialize
         user.name = auth.info.name
         user.password = Devise.friendly_token if user.new_record?
         user.save!
