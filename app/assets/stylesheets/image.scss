@@ -1,14 +1,25 @@
 img {
-  &.img-sm {
+  &.img-avatar {
+    object-fit: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #ccc;
+  }
+
+  &.img-small {
     width: 33px;
     height: 33px;
   }
 
-  &.img-md {
+  &.img-medium {
     width: 72px;
+    height: 72px;
   }
 
-  &.img-lg {
+  &.img-large {
     width: 100px;
+    height: 100px;
   }
 }

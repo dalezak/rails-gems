@@ -3,4 +3,4 @@
   classes ||= ""
   url = user.image.present? && user.image.exists? ? user.image_url(size.to_sym) : "user-#{size}.png"
 %>
-<%= image_tag url, alt: user.name, class: "img-#{size} rounded-circle #{classes}", onerror: "this.src='/assets/user-#{size}.png'" %>
+<%= image_tag url, alt: user.name, title: user.name, alt: user.name, class: "img-avatar img-#{size} #{classes}", onerror: "this.src='/assets/user-#{size}.png'" %>

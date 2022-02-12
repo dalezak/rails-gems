@@ -13,7 +13,9 @@
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%= render_profile(current_user) %>
+          <%= link_to profile_path, title: "Profile", class: "d-none d-sm-block" do %>
+            <%= render_avatar(current_user, "small", "me-2") %>
+          <% end %>
           <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light" do %>
             <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
           <% end %>
