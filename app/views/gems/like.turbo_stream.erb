@@ -1,11 +1,11 @@
 <%= turbo_stream.replace "current-user-gems" do %>
   <%= render '/partials/metatags/user_gems', user: current_user.reload %>
 <% end %>
-<%= turbo_stream.replace dom_id(@gem, :card) do %>
-  <%= render '/gems/card', gem: @gem %>
+<%= turbo_stream.replace dom_id(@gem, :likes) do %>
+  <%= render_likes(@gem) %>
 <% end %>
-<%= turbo_stream.replace dom_id(@gem, :details) do %>
-  <%= render '/gems/details', gem: @gem %>
+<%= turbo_stream.replace dom_id(@gem, :like) do %>
+  <%= render_like(@gem) %>
 <% end %>
 <%= turbo_stream.update dom_id(current_user, :likes) do %>
   <%= human_pluralize(current_user.likes_count, "like") %>

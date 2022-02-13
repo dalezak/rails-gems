@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(gem, :card) do %>
   <% cache(gem) do %>
     <div class="col h-100">
-      <div class="card h-100">
+      <div class="card h-100 animate__animated animate__fadeIn">
         <div class="card-body">
           <h5 class="card-title"><%= link_to gem.name, gem_path(gem), data: { turbo_frame: "_top" } %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= gem.tag_list %></h6>
@@ -9,9 +9,7 @@
         </div>
         <div class="card-footer">
           <%= render_like(gem) %>
-          <%= render_badge(icon: "fas fa-heart") do %>
-            <%= human_pluralize(gem.likes_count, "") %>
-          <% end %>
+          <%= render_likes(gem, "", "animate__animated animate__fadeIn") %>
           <%= render_badge(icon: "fas fa-download") do %>
             <%= human_pluralize(gem.downloads_count, "") %>
           <% end %>

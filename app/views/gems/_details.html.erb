@@ -17,13 +17,11 @@
   </div>
   <div class="card-footer text-muted">
     <%= render_like(gem) %>
-    <%= render_badge(icon: "fas fa-heart") do %>
-      <%= human_pluralize(gem.likes_count, "like") %>
-    <% end %>
+    <%= render_likes(gem, "like") %>
     <%= render_badge(icon: "fas fa-download") do %>
       <%= human_pluralize(gem.downloads_count, "download") %>
     <% end %>
-    <% gem.authors.to_a.each do |author| %>
+    <% gem.authors.to_a.take(3).each do |author| %>
       <%= render_badge(icon: "fas fa-user-cog") do %>
         <%= author %>
       <% end %>

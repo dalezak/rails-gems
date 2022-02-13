@@ -1,3 +1,4 @@
-<%= button_to like_gem_path(gem), method: :post, class: "invisible float-end btn btn-block btn-sm btn-primary", data: { controller: "like", like_gem_value: gem.slug } do %>
+<%= button_to like_gem_path(gem), method: :post, class: "invisible btn btn-block btn-sm btn-primary", 
+  form: { id: dom_id(gem, :like), class: "float-end animate__animated animate__fadeIn" }, data: { controller: "like", like_gem_value: gem.slug } do %>
   <%= tag.i "", class: "far fa-heart", data: { like_target: "icon" } %>
 <% end %>

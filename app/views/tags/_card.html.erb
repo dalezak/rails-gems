@@ -1,6 +1,6 @@
 <% cache(tag) do %>
   <div class="col h-100">
-    <div class="card h-100">
+    <div class="card h-100 animate__animated animate__fadeIn">
       <div class="card-body">
         <h5 class="card-title"><%= link_to tag.name, tag_path(tag), data: { turbo_frame: "_top" } %></h5>
       </div>
