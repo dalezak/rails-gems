@@ -91,12 +91,16 @@ module ApplicationHelper
     render(partial: '/partials/like', locals: { gem: gem })
   end
 
-  def render_match(user)
-    render(partial: '/partials/match', locals: { user: user })
+  def render_match(user, pluralize = false)
+    render(partial: '/partials/match', locals: { user: user, pluralize: pluralize })
   end
 
   def render_avatar(user, size = "medium", classes = "")
     render(partial: '/partials/avatar', locals: { user: user, size: size, classes: classes })
+  end
+
+  def human_pluralize(count, word="")
+    pluralize(number_to_human(count), word)
   end
 
 end

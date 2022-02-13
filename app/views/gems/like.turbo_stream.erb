@@ -7,3 +7,6 @@
 <%= turbo_stream.replace dom_id(@gem, :details) do %>
   <%= render '/gems/details', gem: @gem %>
 <% end %>
+<%= turbo_stream.update dom_id(current_user, :likes) do %>
+  <%= human_pluralize(current_user.likes_count, "like") %>
+<% end %>

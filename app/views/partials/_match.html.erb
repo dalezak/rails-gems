@@ -1,4 +1,5 @@
-<%= tag.span class: "badge bg-secondary invisible", title: "Mutually liked gems", data: { controller: "match", match_user_value: user.slug, match_gems_value: user.gem_list.to_a } do %>
+<% pluralize ||= false %>
+<%= tag.span class: "badge bg-secondary invisible", title: "Mutually liked gems", data: { controller: "match", match_user_value: user.slug, match_gems_value: user.gem_list.to_a, match_pluralize_value: pluralize } do %>
   <%= tag.i "", class: "fas fa-gem" %>
   <%= tag.span "", data: { match_target: "matches" } %>
 <% end %>

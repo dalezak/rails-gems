@@ -18,10 +18,10 @@
   <div class="card-footer text-muted">
     <%= render_like(gem) %>
     <%= render_badge(icon: "fas fa-heart") do %>
-      <%= number_to_human(gem.likes_count) %>
+      <%= human_pluralize(gem.likes_count, "like") %>
     <% end %>
     <%= render_badge(icon: "fas fa-download") do %>
-      <%= number_to_human(gem.downloads_count) %>
+      <%= human_pluralize(gem.downloads_count, "download") %>
     <% end %>
     <% gem.authors.to_a.each do |author| %>
       <%= render_badge(icon: "fas fa-user-cog") do %>

@@ -12,11 +12,11 @@
   </div>
   <div class="card-footer text-muted">
     <%= render_badge(icon: "fas fa-heart") do %>
-      <%= pluralize(user.likes_count, "likes") %>
+      <%= tag.span human_pluralize(user.likes_count, "like"), id: dom_id(user, :likes) %>
     <% end %>
+    <%= render_match(user, true) if user_signed_in? && user != current_user %>
     <%= render_badge(icon: "fas fa-map-marked-alt") do %>
       <%= user.location %>
     <% end if user.location.present? %>
-    <%= render_match(user) if user_signed_in? && user != current_user %>
   </div>
 </div>

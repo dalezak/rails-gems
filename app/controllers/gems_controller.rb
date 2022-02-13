@@ -87,6 +87,7 @@ class GemsController < ApplicationController
     else
       @like = Like.create(gem: @gem, user: current_user)
     end
+    @gem.reload
     respond_to do |format|
       format.html { redirect_to gem_path(@gem) }
       format.turbo_stream { }

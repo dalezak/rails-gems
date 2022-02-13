@@ -11,9 +11,9 @@
         </div>
         <div class="card-footer">
           <%= render_badge(icon: "fas fa-heart") do %>
-            <%= number_to_human(user.likes_count) %>
+            <%= human_pluralize(user.likes_count, "") %>
           <% end %>
-          <%= render_match(user) %>
+          <%= render_match(user, false) %>
         </div>
       </div>
     <% end %>
