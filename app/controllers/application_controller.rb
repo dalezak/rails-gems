@@ -91,6 +91,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+
+  def after_sign_in_path_for(resource)
+    profile_path
+  end
+
+  def after_sign_up_path_for(resource)
+    profile_path(welcome: true)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :title, :image])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :title, :image])

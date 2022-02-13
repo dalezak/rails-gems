@@ -1,3 +1,5 @@
+<% title ["Log in"] %>
+
 <div class="row">
   <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
     <div class="card mb-4">
@@ -5,7 +7,7 @@
         <h2 class="card-title"><%= t('.sign_in') %></h2>
       </div>
       <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
         <div class="mb-3">
           <%= f.label :email, class: "form-label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>

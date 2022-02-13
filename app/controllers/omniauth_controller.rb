@@ -14,7 +14,7 @@ class OmniauthController < Devise::OmniauthCallbacksController
       @user.save if @user.changed?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: "Github"
       sign_in(resource_name, @user)
-      redirect_to root_url, event: :authentication
+      redirect_to profile_url, event: :authentication
     else
       redirect_to root_url, alert: "Unable to sign in via Github"
     end

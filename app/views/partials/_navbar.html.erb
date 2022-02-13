@@ -16,7 +16,7 @@
           <%= link_to profile_path, title: "Profile", class: "d-none d-sm-block me-2" do %>
             <%= render_avatar(current_user, "small") %>
           <% end %>
-          <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light" do %>
+          <%= link_to destroy_user_session_path, class: "btn btn-sm btn-outline-light", data: { turbo: false } do %>
             <%= tag.i "", class: "fas fa-sign-out-alt" %> Logout
           <% end %>
         <% else %>
