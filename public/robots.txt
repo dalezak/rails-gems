@@ -1,1 +1,1 @@
-Sitemap: https://railsgems.com/sitemap.xml.gz
+Sitemap: https://railsgems.com/sitemaps/sitemap.xml.gz
