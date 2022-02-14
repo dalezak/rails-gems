@@ -1,7 +1,8 @@
 if Rails.env.production?
   SitemapGenerator::Sitemap.create_index = true
-  SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
   SitemapGenerator::Sitemap.default_host = ENV['APP_URL']
+  SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+  SitemapGenerator::Sitemap.sitemaps_host = "https://#{ENV['AWS_BUCKET_NAME']}.s3.amazonaws.com"
   SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
     ENV['AWS_BUCKET_NAME'],
     region: ENV['AWS_REGION'],
