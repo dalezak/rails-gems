@@ -131,6 +131,7 @@
   "sidekiq",
   "simple_form",
   "simplecov",
+  "sitemap_generator",
   "slim",
   "stimulus_reflex",
   "store_attribute",

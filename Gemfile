@@ -48,6 +48,8 @@ gem 'rack-attack'
 
 gem "bootsnap", require: false
 
+gem "sitemap_generator"
+
 group :development do
   gem "faker", "~> 2.19"
   gem 'rails-erd'
