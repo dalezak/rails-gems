@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   match '/422', to: 'errors#not_acceptable', via: :all
   match '/500', to: 'errors#unknown_error', via: :all
 
+  get '/sitemap.xml.gz', to: redirect("https://#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['AWS_BUCKET_NAME']}/sitemap.xml.gz")
+
   root "pages#index"
   
   match '*path', to: 'errors#route_not_found', via: :all

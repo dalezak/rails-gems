@@ -1,11 +1,12 @@
 if Rails.env.production?
-  SitemapGenerator::Sitemap.default_host = ENV['APP_URL']
+  SitemapGenerator::Sitemap.create_index = true
   SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+  SitemapGenerator::Sitemap.default_host = ENV['APP_URL']
   SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
     ENV['AWS_BUCKET_NAME'],
+    region: ENV['AWS_REGION'],
     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-    region: ENV['AWS_REGION'])
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'])
   SitemapGenerator::Sitemap.create do
     add home_path, priority: 0.9, changefreq: 'weekly'
     add gems_path, priority: 0.8, changefreq: 'weekly'
