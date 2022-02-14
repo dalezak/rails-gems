@@ -4,7 +4,7 @@
 <% if count > offset %>
 <div id="load_more" data-controller="turbo">
   <div class="d-grid my-4">
-    <%= link_to "Load More", url, class: "btn btn-block btn-outline-secondary", data: { action: "click->turbo#getTurboSteam" } %>
+    <%= link_to "Load More", url, class: "btn btn-block btn-outline-secondary", data: { action: "click->turbo#getRequest" } %>
   </div>
 </div>
 <% end %>

@@ -91,8 +91,8 @@ module ApplicationHelper
     render(partial: '/partials/like', locals: { gem: gem })
   end
 
-  def render_likes(gem, suffix = "", classes = "")
-    render(partial: '/partials/likes', locals: { gem: gem, suffix: suffix, classes: classes })
+  def render_likes(gem, suffix = "")
+    render(partial: '/partials/likes', locals: { gem: gem, suffix: suffix })
   end
 
   def render_match(user, pluralize = false)

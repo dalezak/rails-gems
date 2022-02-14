@@ -7,7 +7,7 @@ import {
 } from "@hotwired/stimulus"
 export default class extends Controller {
 
-  getTurboSteam(event) {
+  getRequest(event) {
     event.preventDefault()
     get(event.target.href, {
       contentType: "text/vnd.turbo-stream.html",
@@ -15,7 +15,7 @@ export default class extends Controller {
     })
   }
 
-  postTurboSteam(event) {
+  postRequest(event) {
     event.preventDefault()
     post(event.target.href, {
       contentType: "text/vnd.turbo-stream.html",

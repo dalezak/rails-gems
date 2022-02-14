@@ -1,5 +1,4 @@
 <% suffix ||= "" %>
-<% classes ||= "" %>
-<%= render_badge(id: dom_id(gem, :likes), icon: "fas fa-heart", classes: classes) do %>
+<%= render_badge(id: dom_id(gem, :likes), icon: "fas fa-heart") do %>
   <%= human_pluralize(gem.likes_count, suffix) %>
 <% end %>
