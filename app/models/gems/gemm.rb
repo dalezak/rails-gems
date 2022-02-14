@@ -41,8 +41,6 @@ class Gemm < ApplicationRecord
   store_attribute :details, :bug_tracker_uri, :string
   store_attribute :details, :mailing_list_uri, :string
 
-  attribute :liked, :boolean
-
   has_many :likes, inverse_of: :gem, dependent: :destroy, foreign_key: "gem_id"
   has_many :users, through: :likes, dependent: :destroy
 
