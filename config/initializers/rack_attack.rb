@@ -37,11 +37,8 @@ Rack::Attack.blocklist 'blocklist fail2ban pentesters' do |req|
       req.path.include?('/wordpress') ||
       req.path.include?('/site') ||
       req.path.include?('/cms') ||
-      req.path.include?('/blog') ||
-      req.path.include?('/news') ||
       req.path.include?('tar.gz') ||
       req.path.include?('.zip') ||
-      req.path.include?('.gz') ||
       req.path.include?('.php') ||
       req.path.include?('.env') ||
       req.path.include?('.git') ||
