@@ -81,6 +81,14 @@ class Gemm < ApplicationRecord
     tags.map{|tag| "##{tag.name.strip.downcase}"}.join(separator)
   end
 
+  def add_tags
+    Tag.all_cached.each do |tag|
+      if tag.synonym?(self.title) && self.tags.exists?(tag.id) == false
+        self.taggings.create(tag_id: tag.id)
+      end
+    end
+  end
+
   def self.import(data)
     gem = Gemm.find_or_initialize_by(slug: data["name"].parameterize)
     gem.name = data["name"]
@@ -99,16 +107,8 @@ class Gemm < ApplicationRecord
     gem.documentation_uri = data["documentation_uri"]
     gem.bug_tracker_uri = data["bug_tracker_uri"]
     gem.mailing_list_uri = data["mailing_list_uri"]
-    gem.save
+    gem.save if gem.changed?
     gem
-  end
-
-  def add_tags
-    Tag.all_cached.each do |tag|
-      if tag.synonym?(self.title) && self.tags.exists?(tag.id) == false
-        self.taggings.create(tag_id: tag.id)
-      end
-    end
   end
 
 end
