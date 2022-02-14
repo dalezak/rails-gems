@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/profile", to: "users#profile", as: :profile
   get "/health", to: "pages#health", as: :health
   get "/about", to: "pages#about", as: :about
+  get '/sitemap.xml.gz', to: redirect("https://#{ENV['AWS_BUCKET_NAME']}.s3.amazonaws.com/sitemaps/sitemap.xml.gz")
   
   match "bad-request", to: "errors#bad_request", as: "bad_request", via: :all
   match "not_authorized", to: "errors#not_authorized", as: "not_authorized", via: :all
@@ -39,9 +40,6 @@ Rails.application.routes.draw do
   match '/406', to: 'errors#not_acceptable', via: :all
   match '/422', to: 'errors#not_acceptable', via: :all
   match '/500', to: 'errors#unknown_error', via: :all
-
-  get '/sitemap.xml.gz', to: redirect("https://#{ENV['AWS_BUCKET_NAME']}.s3.amazonaws.com/sitemaps/sitemap.xml.gz")
-  get '/sitemaps/sitemap.xml.gz', to: redirect("https://#{ENV['AWS_BUCKET_NAME']}.s3.amazonaws.com/sitemaps/sitemap.xml.gz")
 
   root "pages#index"
   
