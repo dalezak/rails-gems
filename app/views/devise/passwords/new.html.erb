@@ -1,24 +1,26 @@
-<div class="row">
-  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 class="card-title"><%= t('.forgot_your_password') %></h2>
-      </div>
-      <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="mb-4">
-            <%= f.label :email, class: "form-label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-          </div>
-          <div class="mb-4">
-            <%= f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
-      <div class="card-footer text-muted">
-        <%= render "devise/shared/links" %>
+<% 
+	title [t('.forgot_your_password')]
+	turbo ||= false
+	frame = turbo_frame_request_id || "modal"	
+%>
+<% if turbo_frame_request? || turbo %>
+  <%= turbo_frame_tag frame do %>
+    <%= render_modal title: t('.forgot_your_password'), body: "/devise/passwords/new", footer: "/devise/shared/links" %>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="card-title"><%= t('.forgot_your_password') %></h2>
+        </div>
+        <div class="card-body">
+          <%= render "devise/passwords/new" %>
+        </div>
+        <div class="card-footer text-muted">
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
-  </div>  
-</div>
+  </div>
+<% end %>

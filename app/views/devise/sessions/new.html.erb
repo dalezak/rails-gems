@@ -1,35 +1,26 @@
-<% title ["Log in"] %>
-
-<div class="row">
-  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 class="card-title"><%= t('.sign_in') %></h2>
-      </div>
-      <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-        <div class="mb-3">
-          <%= f.label :email, class: "form-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+<% 
+  title [t('.sign_in')] 
+  turbo ||= false
+  frame = turbo_frame_request_id || "modal"
+%>
+<% if turbo_frame_request? || turbo %>
+  <%= turbo_frame_tag frame do %>
+    <%= render_modal title: t('.sign_in'), body: "/devise/sessions/new", footer: "/devise/shared/links" %>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="card-title"><%= t('.sign_in') %></h2>
         </div>
-        <div class="mb-3">
-          <%= f.label :password, class: "form-label" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+        <div class="card-body">
+          <%= render "devise/sessions/new" %>
         </div>
-        <% if devise_mapping.rememberable? %>
-          <div class="mb-3 form-check">
-            <%= f.check_box :remember_me, class: 'form-check-input' %>
-            <%= f.label :remember_me, class: 'form-check-label' %>
-          </div>
-        <% end %>
-        <div class="mb-4 mt-4 text-end">
-          <%= f.submit t('.sign_in'), class: "btn btn-primary" %>
+        <div class="card-footer text-muted">
+          <%= render "devise/shared/links" %>
         </div>
-      <% end %>
       </div>
-      <div class="card-footer text-muted">
-        <%= render "devise/shared/links" %>
-      </div>
-    </div>
-  </div>  
-</div>
+    </div>  
+  </div>
+<% end %>

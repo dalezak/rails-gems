@@ -1,53 +1,26 @@
-<% title ["Sign up"] %>
-
-<div class="row">
-  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 class="card-title"><%= t('.sign_up') %></h2>
-      </div>
-      <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
-					<%= render "devise/shared/error_messages", resource: resource %>
-					<div class="mb-3">
-						<%= f.label :name, class: "form-label" %>
-						<%= f.text_field :name, autofocus: true, autocomplete: "text", class: 'form-control', required: true %>
-					</div>
-					<div class="mb-3">
-						<%= f.label :title, "Bio", class: "form-label" %>
-						<%= f.text_field :title, autocomplete: "text", class: 'form-control' %>
-					</div>
-					<div class="mb-3">
-						<%= f.label :email, class: "form-label" %>
-						<%= f.email_field :email, autocomplete: "email", class: 'form-control', required: true %>
-					</div>
-					<div class="mb-3">
-						<%= f.label :image, class: "form-label" %>
-						<div class="input-group">
-							<%= f.file_field :image, placeholder: "Select image", class: "form-control", accept: 'image/jpg,image/jpeg,image/png' %>
-						</div>
-					</div>
-					<div class="row mb-4">
-						<div class="col">
-							<%= f.label :password, class: "form-label" %>
-							<%= f.password_field :password, autocomplete: "new-password", class: 'form-control', required: true %>
-							<% if @minimum_password_length %>
-								<div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
-							<% end %>
-						</div>
-						<div class="col">
-							<%= f.label :password_confirmation, class: "form-label" %>
-							<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', required: true %>
-						</div>
-					</div>
-					<div class="mb-3 text-end">
-						<%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
-					</div>
-				<% end %>
-      </div>
-      <div class="card-footer text-muted">
-        <%= render "devise/shared/links" %>
-      </div>
-    </div>
-  </div>  
-</div>
+<% 
+	title [t('.sign_up')]
+	turbo ||= false
+	frame = turbo_frame_request_id || "modal"	
+%>
+<% if turbo_frame_request? || turbo %>
+  <%= turbo_frame_tag frame do %>
+    <%= render_modal title: t('.sign_up'), body: "/devise/registrations/new", footer: "/devise/shared/links" %>
+  <% end %>
+<% else %>
+	<div class="row">
+		<div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
+			<div class="card mb-4">
+				<div class="card-header">
+					<h2 class="card-title"><%= t('.sign_up') %></h2>
+				</div>
+				<div class="card-body">
+					<%= render "devise/registrations/new" %>
+				</div>
+				<div class="card-footer">
+					<%= render "devise/shared/links" %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>

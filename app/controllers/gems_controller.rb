@@ -80,17 +80,24 @@ class GemsController < ApplicationController
   end
 
   def like
-    authorize! :like, @gem
-    @like = Like.for_user(current_user).for_gem(@gem).first
-    if @like.present?
-      @like.destroy
+    if user_signed_in?
+      authorize! :like, @gem
+      @like = Like.for_user(current_user).for_gem(@gem).first
+      if @like.present?
+        @like.destroy
+      else
+        @like = Like.create(gem: @gem, user: current_user)
+      end
+      @gem.reload
+      respond_to do |format|
+        format.html { redirect_to gem_path(@gem) }
+        format.turbo_stream { }
+      end
     else
-      @like = Like.create(gem: @gem, user: current_user)
-    end
-    @gem.reload
-    respond_to do |format|
-      format.html { redirect_to gem_path(@gem) }
-      format.turbo_stream { }
+      respond_to do |format|
+        format.html { redirect_to new_user_session_path }
+        format.turbo_stream { render turbo_stream: turbo_stream.update("modal", template: '/devise/sessions/new', locals: { turbo: true }) }
+      end
     end
   end
 

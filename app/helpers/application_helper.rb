@@ -79,6 +79,30 @@ module ApplicationHelper
     body.join(" ")
   end
 
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def resource_name
+    devise_mapping.name
+  end
+
+  def resource_class
+    devise_mapping.to
+  end
+
+  def turbo_frame_request?
+    turbo_frame_request_id.present?
+  end
+
+  def turbo_frame_request_id
+    request.headers["Turbo-Frame"]
+  end
+
   def render_cards(sm: 1, md: 2, lg: 3, xl: 4, gap: 4, &block)
     render(partial: '/partials/cards', locals: { sm: sm, md: md, lg: lg, xl: xl, gap: gap, block: block })
   end
@@ -105,6 +129,10 @@ module ApplicationHelper
 
   def human_pluralize(count, word="")
     pluralize(number_to_human(count), word)
+  end
+
+  def render_modal(title: "", body: "", footer: "")
+    render(partial: '/partials/modal', locals: { title: title, body: body, footer: footer })
   end
 
 end

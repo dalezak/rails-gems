@@ -29,9 +29,6 @@ export default class extends Controller {
         this.iconTarget.classList.add("far");
         this.element.classList.add("btn-outline-primary");
       }
-      this.element.classList.remove("invisible");
-    } else {
-      this.element.classList.add("invisible");
     }
   }
 

@@ -32,7 +32,7 @@
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <%= link_to new_user_session_path, class: 'dropdown-item', data: { turbo: false } do %>
+                <%= link_to new_user_session_path, class: 'dropdown-item', data: { turbo: true, turbo_frame: 'modal' } do %>
                   <%= tag.i "", class: "fas fa-key" %> Sign in with Password
                 <% end %>
               </li>
