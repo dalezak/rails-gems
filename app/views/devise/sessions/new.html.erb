@@ -1,26 +1,15 @@
-<% 
-  title [t('.sign_in')] 
-  turbo ||= false
-  frame = turbo_frame_request_id || "modal"
-%>
-<% if turbo_frame_request? || turbo %>
-  <%= turbo_frame_tag frame do %>
-    <%= render_modal title: t('.sign_in'), body: "/devise/sessions/new", footer: "/devise/shared/links" %>
-  <% end %>
-<% else %>
-  <div class="row">
-    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h2 class="card-title"><%= t('.sign_in') %></h2>
-        </div>
-        <div class="card-body">
-          <%= render "devise/sessions/new" %>
-        </div>
-        <div class="card-footer text-muted">
-          <%= render "devise/shared/links" %>
-        </div>
+<div class="row">
+  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-xl-4">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="card-title"><%= t('.sign_in') %></h2>
       </div>
-    </div>  
-  </div>
-<% end %>
+      <div class="card-body">
+        <%= render "devise/sessions/new" %>
+      </div>
+      <div class="card-footer text-muted">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>  
+</div>

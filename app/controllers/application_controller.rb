@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  helper_method :turbo_frame_request?, :turbo_frame_request_id
+  helper_method :resource, :devise_mapping, :resource_name, :resource_class
+
+  before_action :turbo_frame_request_variant
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Exception, with: :unknown_error if Rails.env.production?
@@ -93,6 +97,22 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def resource_name
+    devise_mapping.name
+  end
+
+  def resource_class
+    devise_mapping.to
+  end
+
   def after_sign_in_path_for(resource)
     profile_path
   end
@@ -104,6 +124,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :title, :image])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :title, :image])
+  end
+
+  def turbo_frame_request_variant
+    request.variant = :turbo_frame if turbo_frame_request?
   end
 
 end
