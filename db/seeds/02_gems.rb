@@ -14,14 +14,12 @@
   "awesome_print",
   "aws-sdk-s3",
   "better_errors",
-  "better_errors",
   "binding_of_caller",
   "blazer",
   "blind_index",
   "bootstrap",
   "bootstrap_form",
   "braintree",
-  "brakeman",
   "brakeman",
   "bullet",
   "bundler",
@@ -42,8 +40,8 @@
   "derailed_benchmarks",
   "devise",
   "devise-i18n",
-  "devise_invitable",
   "devise-jwt",
+  "devise_invitable",
   "discard",
   "dotenv",
   "draper",
@@ -84,7 +82,6 @@
   "omniauth",
   "omniauth-facebook",
   "omniauth-github",
-  "omniauth-google",
   "omniauth-google-oauth2",
   "omniauth-twitter",
   "overcommit",
@@ -147,14 +144,14 @@
   "webpacker",
   "wicked",
 ].each do |name|
-  data = Gems.info name
-  gem = Gemm.import data
-  puts gem.inspect
-end
-Gems.most_downloaded.each do |items|
-  item = items.first
-  name = (item["name"] || item["full_name"]).gsub("-#{item['number']}", "")
-  data = Gems.info name
-  gem = Gemm.import data
-  puts gem.inspect
+  begin
+    data = Gems.info(name)
+    gem = Gemm.import_rubygems(data)
+    puts gem.inspect
+  rescue => exception
+    puts exception
+    break
+  ensure
+    sleep(1.seconds)
+  end
 end

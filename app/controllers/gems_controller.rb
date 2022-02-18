@@ -8,18 +8,19 @@ class GemsController < ApplicationController
     @search = params.fetch(:search, nil)
     @offset = params.fetch(:offset, 0).to_i
     @limit = [params.fetch(:limit, 24).to_i, 48].min
+    order = [likes_count: :desc, stars_count: :desc, downloads_count: :desc]
     query = Gemm.
       with_tags(true).
       for_tag(@tag).
       for_user(@user).
       for_search(@search)
-    @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, downloads_count: :desc, name: :asc)
+    @gems = query.limit(@limit).offset(@offset).order(order)
     @gems_count = query.count(:all) unless request.format.json?
     if @search.present? && @gems.count.zero?
       Gems.search(@search).to_a.take(@limit).each do |result|
-        Gemm.import(result)
+        Gemm.import_rubygems(result)
       end
-      @gems = query.limit(@limit).offset(@offset).order(likes_count: :desc, name: :asc)
+      @gems = query.limit(@limit).offset(@offset).order(order)
       @gems_count = query.count(:all) unless request.format.json?
     end
     respond_to do |format|

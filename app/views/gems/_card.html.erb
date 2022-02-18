@@ -9,9 +9,12 @@
       <div class="card-footer">
         <%= render_like(gem) %>
         <%= render_likes(gem) %>
+        <%= render_badge(icon: "fas fa-star") do %>
+          <%= human_pluralize(gem.stars_count) %>
+        <% end if gem.stars_count.positive? %>
         <%= render_badge(icon: "fas fa-download") do %>
           <%= human_pluralize(gem.downloads_count, "") %>
-        <% end %>
+        <% end if gem.downloads_count.positive? %>
       </div>
     </div>
   </div>

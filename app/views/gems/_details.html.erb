@@ -18,9 +18,18 @@
   <div class="card-footer text-muted">
     <%= render_like(gem) %>
     <%= render_likes(gem, "like") %>
+    <%= render_badge(icon: "fas fa-star") do %>
+      <%= human_pluralize(gem.stars_count, "star") %>
+    <% end if gem.stars_count.positive? %>
     <%= render_badge(icon: "fas fa-download") do %>
       <%= human_pluralize(gem.downloads_count, "download") %>
-    <% end %>
+    <% end if gem.downloads_count.positive? %>
+    <%= render_badge(icon: "far fa-eye") do %>
+      <%= human_pluralize(gem.watchers_count, "watcher") %>
+    <% end if gem.watchers_count.positive? %>
+    <%= render_badge(icon: "fas fa-code-branch") do %>
+      <%= human_pluralize(gem.forks_count, "fork") %>
+    <% end if gem.forks_count.positive? %>
     <% gem.authors.to_a.take(3).each do |author| %>
       <%= render_badge(icon: "fas fa-user-cog") do %>
         <%= author %>

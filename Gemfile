@@ -36,6 +36,7 @@ gem "bootstrap_form", "~> 5.0"
 gem "devise-bootstrap5", "~> 0.1.3"
 
 gem "gems"
+gem "octokit"
 
 gem 'store_attribute'
 

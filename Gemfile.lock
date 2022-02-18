@@ -254,6 +254,9 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
+    octokit (4.22.0)
+      faraday (>= 0.9)
+      sawyer (~> 0.8.0, >= 0.5.3)
     omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
@@ -364,6 +367,9 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sawyer (0.8.2)
+      addressable (>= 2.3.5)
+      faraday (> 0.8, < 2.0)
     scout_apm (5.1.1)
       parser
     selenium-webdriver (4.1.0)
@@ -459,6 +465,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   memory_profiler
+  octokit
   omniauth (~> 2.0)
   omniauth-github (~> 2.0)
   omniauth-rails_csrf_protection (~> 1.0, >= 1.0.1)
