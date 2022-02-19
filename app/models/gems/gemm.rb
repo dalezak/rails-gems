@@ -130,24 +130,35 @@ class Gemm < ApplicationRecord
   end
 
   def import_github
-    if self.homepage_uri.to_s.start_with?("https://github.com/")
-      begin
-        path = self.homepage_uri.to_s.gsub("https://github.com/", "")
+    begin
+      if github_path.present?
         client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
-        repo = client.repo(path)
+        repo = client.repo(github_path)
         self.forks_count = repo.forks_count
         self.watchers_count = repo.watchers_count
         self.stars_count = repo.subscribers_count
         self.save! if self.changed?
-      rescue => exception
-        Rails.logger.error "Gemm#import_github exception #{exception}"
       end
+    rescue => exception
+      Rails.logger.error "Gemm#import_github exception #{exception}"
     end
     self
   end
 
   def import_github_job
     GithubImportJob.perform_later self.id if Rails.env.production?
+  end
+
+  def github_path
+    unless defined? @github_path
+      [self.homepage_uri, self.source_code_uri].each do |uri|
+        if uri.start_with?("https://github.com/")
+          components = uri.gsub("https://github.com/", "").split("/")
+          @github_path ||= [components.first, components.second].join("/")
+        end
+      end
+    end
+    @github_path
   end
 
 end
