@@ -1,4 +1,4 @@
-<%- if controller_name != 'sessions' %>
+<%- if controller_name != 'sessions' && controller_name != 'gems' %>
   <%= link_to "Already have an account?", new_session_path(resource_name), class: "card-link", data: { turbo: true, turbo_frame: 'modal' } %>
 <% end %>
 
