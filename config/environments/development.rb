@@ -40,13 +40,15 @@ Rails.application.configure do
   # config.active_storage.service = :local
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = {
     host: ENV['APP_URL'].to_s.sub(/^https?:\/\//, ''),
     port: 3000,
     protocol: 'http'
   }
-  config.action_mailer.delivery_method = :smtp
   if ENV['SENDGRID_API_KEY'].present?
     config.action_mailer.smtp_settings = {
       address: 'smtp.sendgrid.net',
@@ -69,8 +71,6 @@ Rails.application.configure do
     }
   end
   config.default_url_options = { host: ENV['APP_URL'] }
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
