@@ -211,6 +211,10 @@ GEM
     jsbundling-rails (1.0.0)
       railties (>= 6.0.0)
     jwt (2.3.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -464,6 +468,7 @@ DEPENDENCIES
   image_processing (~> 1.12)
   jbuilder
   jsbundling-rails
+  letter_opener
   memory_profiler
   octokit
   omniauth (~> 2.0)

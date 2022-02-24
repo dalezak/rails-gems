@@ -52,6 +52,7 @@ gem "bootsnap", require: false
 gem "sitemap_generator"
 
 group :development do
+  gem "letter_opener"
   gem "faker", "~> 2.19"
   gem 'rails-erd'
   gem 'annotate'

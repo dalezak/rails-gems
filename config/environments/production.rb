@@ -73,20 +73,32 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
     host: ENV['APP_URL'].gsub(/^https?:\/\//, '')
   }
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    domain: ENV['APP_URL'].gsub(/^https?:\/\//, ''),
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
   config.action_mailer.deliver_later_queue_name = 'mailers'
-  config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
+  if ENV['SENDGRID_API_KEY'].present?
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      domain: ENV['APP_URL'].to_s.sub(/^https?:\/\//, ''),
+      user_name: 'apikey',
+      password: ENV['SENDGRID_API_KEY']
+    }
+  elsif ENV['SENDGRID_USERNAME'].present? && ENV['SENDGRID_PASSWORD'].present?
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      authentication: :login,
+      enable_starttls_auto: true,
+      domain: ENV['APP_URL'].to_s.sub(/^https?:\/\//, ''),
+      user_name: ENV['SENDGRID_USERNAME'],
+      password: ENV['SENDGRID_PASSWORD']
+    }
+  end
   config.default_url_options = { host: ENV['APP_URL'] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
