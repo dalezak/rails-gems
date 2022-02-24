@@ -97,7 +97,7 @@ class GemsController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to new_user_session_path }
-        format.turbo_stream { render turbo_stream: turbo_stream.update("modal", template: '/devise/sessions/new', locals: { turbo: true }) }
+        format.turbo_stream { }
       end
     end
   end

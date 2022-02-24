@@ -1,3 +1,11 @@
+<div class="d-grid">
+  <%= button_to user_github_omniauth_authorize_path, class: 'btn btn-outline-primary w-100', data: { turbo: false } do %>
+    <%= tag.i "", class: "fab fa-github" %> Sign in with Github
+  <% end %>
+</div>
+
+<div class="divider my-3">OR</div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="mb-3">
