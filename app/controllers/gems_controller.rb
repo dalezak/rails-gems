@@ -1,7 +1,7 @@
 class GemsController < ApplicationController
   before_action :set_user, only: [:index]
   before_action :set_tag, only: [:index]
-  before_action :set_gem, only: [:edit, :update, :destroy, :like]
+  before_action :set_gem, only: [:edit, :update, :destroy, :like, :share]
 
   def index
     authorize! :index, Gemm
@@ -99,6 +99,14 @@ class GemsController < ApplicationController
         format.html { redirect_to new_user_session_path }
         format.turbo_stream { }
       end
+    end
+  end
+
+  def share
+    authorize! :share, @gem
+    respond_to do |format|
+      format.html { redirect_to gem_path(@gem) }
+      format.turbo_stream { }
     end
   end
 

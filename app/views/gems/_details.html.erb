@@ -17,6 +17,7 @@
   </div>
   <div class="card-footer text-muted">
     <%= render_like(gem) %>
+    <%= render_share(gem, share_gem_path(gem)) %>
     <%= render_likes(gem, "like") %>
     <%= render_badge(icon: "fas fa-star") do %>
       <%= human_pluralize(gem.stars_count, "star") %>

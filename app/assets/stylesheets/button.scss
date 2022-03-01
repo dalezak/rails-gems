@@ -1,0 +1,102 @@
+@mixin btn($background, $border, $color, $highlight:"") {
+  display: inline-block;
+  color: $color;
+  border-color: $border;
+  background-color: $background;
+
+  .fa {
+    color: $color;
+  }
+
+  &:hover {
+    color: $color;
+    border-color: darken($border, 10%);
+
+    @if $highlight !="" {
+      background-color: $highlight;
+    }
+
+    @else {
+      background-color: darken($background, 10%);
+    }
+  }
+
+  &:active {
+    border-color: darken($border, 10%);
+    background-color: darken($background, 10%);
+
+    @if $highlight {
+      background-color: $highlight;
+    }
+
+    @else {
+      background-color: darken($background, 10%);
+    }
+  }
+}
+
+.btn {
+  &.btn-block {
+    width: 100%;
+  }
+
+  &.btn-email {
+    @include btn(#fff, #999, #aaa, #ccc);
+  }
+
+  &.btn-email-solid {
+    @include btn(#aaa, #999, #fff);
+  }
+
+  &.btn-image {
+    @include btn(#fff, #999, #aaa, #ccc);
+  }
+
+  &.btn-image-solid {
+    @include btn(#ccc, #bbb, #fff);
+  }
+
+  &.btn-facebook {
+    @include btn(#fff, #7caac3, #577788, #ebf0f2);
+  }
+
+  &.btn-facebook-solid {
+    @include btn(#506fb3, #44609d, #fff);
+  }
+
+  &.btn-twitter {
+    @include btn(#fff, #bbdef8, #55acee, #eff7fd);
+  }
+
+  &.btn-twitter-solid {
+    @include btn(#74bbf1, #55acee, #fff);
+  }
+
+  &.btn-google {
+    @include btn(#fff, #f1b7b0, #dd4b39, #fdf6f5);
+  }
+
+  &.btn-google-solid {
+    @include btn(#e26556, #dd4b39, #fff);
+  }
+
+  &.btn-linkedin {
+    @include btn(#fff, #9dcae2, #0b7ab6, #e4f5fd);
+  }
+
+  &.btn-linkedin-solid {
+    @include btn(#0d8fd6, #0b7ab6, #fff);
+  }
+
+  &.btn-pinterest {
+    @include btn(#fff, #cc3333, #993333, #fcf1f1);
+  }
+
+  &.btn-pinterest-solid {
+    @include btn(#cc3333, #993333, #fff);
+  }
+
+  &.btn-outline-light {
+    @include btn(#fff, #ccc, #aaa, #eee);
+  }
+}

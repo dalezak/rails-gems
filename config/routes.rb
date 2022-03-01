@@ -3,15 +3,22 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
 
   resources :tags do
+    member do
+      post "share", as: :share
+    end  
     resources :gems, only: [:index]
   end
 
   resources :users, path: :devs do
+    member do
+      post "share", as: :share
+    end
     resources :gems, only: [:index]
   end  
   
   resources :gems do
     member do
+      post "share", as: :share
       post "like", as: :like, to: "gems#like"
     end 
     resources :users, only: [:index]

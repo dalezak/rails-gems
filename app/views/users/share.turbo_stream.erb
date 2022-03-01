@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "modal" do %>
+  <%= render_modal title: "Share #{@user.try(:name) || "Dev"}", body: "/users/share" %>
+<% end %>

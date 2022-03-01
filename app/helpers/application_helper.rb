@@ -3,6 +3,10 @@ module ApplicationHelper
     "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
   end
 
+  def current_domain
+    request.host_with_port.to_s
+  end
+
   def current_site
     Rails.application.class.module_parent.name
   end
@@ -103,12 +107,16 @@ module ApplicationHelper
     render(partial: '/partials/avatar', locals: { user: user, size: size, classes: classes })
   end
 
-  def human_pluralize(count, word="")
-    pluralize(number_to_human(count), word)
+  def render_share(model, url = nil)
+    render(partial: '/partials/share', locals: { model: model, url: url })
   end
 
   def render_modal(title: "", body: "", footer: "")
     render(partial: '/partials/modal', locals: { title: title, body: body, footer: footer })
+  end
+
+  def human_pluralize(count, word="")
+    pluralize(number_to_human(count), word)
   end
 
 end

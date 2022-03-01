@@ -1,0 +1,18 @@
+<p>
+  <%= link_to "mailto:?&subject=#{current_site} | #{@gem.name}&body=#{@gem.name}%0D%0A#{@gem.title}%0D%0A#{gem_url(@gem)}",
+      class: 'btn btn-block btn-email-solid', title: 'Share via Email', target: '_blank', data: { turbo: false } do %>
+    <i class="far fa-envelope"></i> Email
+  <% end %>
+</p>
+<p>
+  <%= link_to "http://twitter.com/intent/tweet?text=#{current_site},+#{CGI.escape(@gem.name)},+#{CGI.escape(@gem.title)}+#{gem_url(@gem)}+%23#{current_site.downcase}+%23rubyonrails",
+      data: { popup_width: 600, popup_height: 400 }, class: 'btn btn-block btn-twitter-solid', title: 'Share via Twitter', target: '_blank', data: { turbo: false } do %>
+    <i class="fab fa-twitter"></i> Twitter
+  <% end %>
+</p>
+<p>
+  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{gem_url(@gem)}&quote=#{current_site},+#{CGI.escape(@gem.name)}, +#{CGI.escape(@gem.title)}",
+      data: { popup_width: 600, popup_height: 400 }, class: 'btn btn-block btn-facebook-solid', title: 'Share via Facebook', target: '_blank', data: { turbo: false } do %>
+    <i class="fab fa-facebook"></i> Facebook
+  <% end %>
+</p>

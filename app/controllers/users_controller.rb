@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_gem, only: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :share]
 
   def index
     authorize! :index, User
@@ -70,6 +70,14 @@ class UsersController < ApplicationController
 
   def profile
     authorize! :show, current_user
+  end
+
+  def share
+    authorize! :share, @user
+    respond_to do |format|
+      format.html { redirect_to user_path(@user) }
+      format.turbo_stream { }
+    end
   end
 
   private

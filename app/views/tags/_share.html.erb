@@ -1,0 +1,18 @@
+<p>
+  <%= link_to "mailto:?&subject=#{current_site} | #{@tag.name}&body=#{tag_url(@tag)}",
+      class: 'btn btn-block btn-email-solid', title: 'Share via Email', target: '_blank', data: { turbo: false } do %>
+    <i class="far fa-envelope"></i> Email
+  <% end %>
+</p>
+<p>
+  <%= link_to "http://twitter.com/intent/tweet?text=#{current_site},+#{CGI.escape(@tag.name)}+#{tag_url(@tag)}+%23#{current_site.downcase}+%23rubyonrails",
+      data: { popup_width: 600, popup_height: 400 }, class: 'btn btn-block btn-twitter-solid', title: 'Share via Twitter', target: '_blank', data: { turbo: false } do %>
+    <i class="fab fa-twitter"></i> Twitter <%= current_hashtag %>
+  <% end %>
+</p>
+<p>
+  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{tag_url(@tag)}&quote=#{current_site},+#{CGI.escape(@tag.name)}",
+      data: { popup_width: 600, popup_height: 400 }, class: 'btn btn-block btn-facebook-solid', title: 'Share via Facebook', target: '_blank', data: { turbo: false } do %>
+    <i class="fab fa-facebook"></i> Facebook
+  <% end %>
+</p>

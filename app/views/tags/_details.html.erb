@@ -3,6 +3,7 @@
     <h1 class="card-title"><%= tag.name %></h1>
   </div>
   <div class="card-footer text-muted">
+    <%= render_share(tag) %>
     <%= render_badge(icon: "fas fa-tag") do %>
       <%= number_to_human(tag.taggings_count) %>
     <% end %>

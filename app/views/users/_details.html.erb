@@ -11,6 +11,7 @@
     <%= link_to "Twitter", user.twitter_uri, class: "card-link", target: "_blank" if user.twitter_uri.present? %>
   </div>
   <div class="card-footer text-muted">
+    <%= render_share(user) %>
     <%= render_badge(icon: "fas fa-heart") do %>
       <%= tag.span human_pluralize(user.likes_count, "like"), id: dom_id(user, :likes) %>
     <% end %>

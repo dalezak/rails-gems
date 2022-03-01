@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy, :share]
 
   def index
     authorize! :index, Tag
@@ -62,6 +62,14 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tags_url, notice: 'Tag was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  def share
+    authorize! :share, @tag
+    respond_to do |format|
+      format.html { redirect_to tag_path(@tag) }
+      format.turbo_stream { }
     end
   end
 

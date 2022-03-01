@@ -1,0 +1,5 @@
+<% url ||= polymorphic_path([:share, model]) %>
+<%= button_to url, method: :post, class: "btn btn-block btn-sm btn-outline-dark", title: "Share #{model.name}",
+  form: { id: dom_id(model, :share), class: "float-end ms-1" }, data: { turbo: true } do %>
+  <%= tag.i "", class: "fas fa-share" %>
+<% end %>
