@@ -11,6 +11,7 @@
   "anyway_config",
   "apartment",
   "attr_encrypted",
+  "avo",
   "awesome_print",
   "aws-sdk-s3",
   "better_errors",
