@@ -83,6 +83,14 @@ module ApplicationHelper
     body.join(" ")
   end
 
+  def active(controllers, action_names = nil)
+    class_name = controllers.split(",").any? { |c| controller.controller_name == c.strip } ? "active" : ""
+    if class_name.present? && action_names.present?
+      return action_names.split(",").any? { |an| controller.action_name == an.strip } ? "active" : ""
+    end
+    class_name
+  end
+
   def render_cards(sm: 1, md: 2, lg: 3, xl: 4, gap: 4, &block)
     render(partial: '/partials/cards', locals: { sm: sm, md: md, lg: lg, xl: xl, gap: gap, block: block })
   end
