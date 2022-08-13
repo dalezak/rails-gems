@@ -83,6 +83,6 @@ production:
   <<: *default
   database: rails_gems_production
   username: rails_gems
-  password: <%= ENV["RAILS_GEMS_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
   advisory_locks: false
   prepared_statements: false
