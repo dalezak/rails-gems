@@ -210,6 +210,10 @@ GEM
     jmespath (1.5.0)
     jsbundling-rails (1.0.0)
       railties (>= 6.0.0)
+    judoscale-rails (1.4.1)
+      judoscale-ruby (= 1.4.1)
+      railties
+    judoscale-ruby (1.4.1)
     jwt (2.3.0)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -314,7 +318,6 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails_autoscale_agent (0.11.0)
     railties (7.0.2.2)
       actionpack (= 7.0.2.2)
       activesupport (= 7.0.2.2)
@@ -468,6 +471,7 @@ DEPENDENCIES
   image_processing (~> 1.12)
   jbuilder
   jsbundling-rails
+  judoscale-rails
   letter_opener
   memory_profiler
   octokit
@@ -479,7 +483,6 @@ DEPENDENCIES
   rack-attack
   rails (~> 7.0.1)
   rails-erd
-  rails_autoscale_agent
   redis (~> 4.0)
   redis-rails
   rubocop

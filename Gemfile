@@ -21,7 +21,9 @@ gem "jbuilder"
 gem 'sidekiq'
 gem "redis", "~> 4.0"
 gem 'redis-rails'
-gem 'rails_autoscale_agent'
+
+gem 'judoscale-rails'
+gem 'judoscale-sidekiq'
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'devise-i18n'
