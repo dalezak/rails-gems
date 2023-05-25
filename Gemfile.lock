@@ -214,6 +214,9 @@ GEM
       judoscale-ruby (= 1.4.1)
       railties
     judoscale-ruby (1.4.1)
+    judoscale-sidekiq (1.4.1)
+      judoscale-ruby (= 1.4.1)
+      sidekiq (>= 5.0)
     jwt (2.3.0)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -472,6 +475,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   judoscale-rails
+  judoscale-sidekiq
   letter_opener
   memory_profiler
   octokit
